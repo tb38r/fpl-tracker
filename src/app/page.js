@@ -4,6 +4,7 @@
 
 import TimeComponent from "./components/TimeComponent";
 import PositionComponent from "./components/PositionComponent";
+import OuterShell from "./components/OuterShell";
 import { useState } from "react";
 
 
@@ -29,7 +30,10 @@ export default function Home() {
 
       </div>
 
-      <div className="h-2/5"></div>
+      <div className="h-2/5 grid gap-2 grid-cols-4">
+      <OuterShell surname= 'Lawal' score='12.8'  teamname="arsenalkit.png"/>
+      </div>
+   
 
 
     </div>
