@@ -5,6 +5,7 @@
 import TimeComponent from "./components/TimeComponent";
 import PositionComponent from "./components/PositionComponent";
 import OuterShell from "./components/OuterShell";
+import HeaderComponent from "./components/HeaderComponent";
 import { useState } from "react";
 
 
@@ -14,8 +15,10 @@ export default function Home() {
 
 
   return (
-    <div className="container h-full mx-auto flex flex-col justify-evenly">
-      <header className=" text-sky-400 h-1/6 text-4xl font-bold text-center items-center flex justify-center">FPL TRACKER</header>
+    
+    <div className="container h-full mx-auto flex flex-col ">
+      <HeaderComponent/>
+      <div className="h-1/4 pt-6 flex flex-col justify-evenly">
       <div className= "h-1/11 grid gap-4 grid-cols-3 h-20">
         <TimeComponent time="3" index= '1' activeIndex={activeIndex} handleComponentClick={setActiveIndex} />
         <TimeComponent time="5" index= '2' activeIndex={activeIndex} handleComponentClick={setActiveIndex} />
@@ -29,9 +32,14 @@ export default function Home() {
         <PositionComponent position="FORWARDS" index= '4' activeIndex={activePositionIndex} handleComponentClick={setActivePositionIndex} />
 
       </div>
+      </div>
 
-      <div className="h-2/5 grid gap-2 grid-cols-4">
-      <OuterShell surname= 'Lawal' score='12.8'  teamname="arsenalkit.png"/>
+      <div className="h-2/5 grid gap-2 grid-cols-4 pt-20">
+      <OuterShell surname= 'Lawal' score='12.8'  teamname="newcastleunited"/>
+      <OuterShell surname= 'Mutungi' score='10.3'  teamname="manchesterunited"/>
+      <OuterShell surname= 'Million' score='10.4'  teamname="tottenham"/>
+
+
       </div>
    
 
