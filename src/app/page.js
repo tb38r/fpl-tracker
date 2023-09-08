@@ -6,12 +6,30 @@ import TimeComponent from "./components/TimeComponent";
 import PositionComponent from "./components/PositionComponent";
 import OuterShell from "./components/OuterShell";
 import HeaderComponent from "./components/HeaderComponent";
-import { useState } from "react";
+import BaseBody from "./components/BaseComponent";
+import { useState, useEffect} from "react";
+
+
+// export async function getServerSideProps (){
+  
+//     const response = await fetch("https://fantasy.premierleague.com/api/event/1/live/");
+//     const data = await response.json();
+    
+//     console.log(data);
+
+//     return{
+//       props:{
+//         data
+//       }
+//     }
+// }
 
 
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
+ 
+
 
 
   return (
@@ -34,13 +52,7 @@ export default function Home() {
       </div>
       </div>
 
-      <div className="h-2/5 grid gap-2 grid-cols-4 pt-20">
-      <OuterShell surname= 'Lawal' score='12.8'  teamname="newcastleunited"/>
-      <OuterShell surname= 'Mutungi' score='10.3'  teamname="manchesterunited"/>
-      <OuterShell surname= 'Million' score='10.4'  teamname="tottenham"/>
-
-
-      </div>
+     <BaseBody test='hello'/>
    
 
 
@@ -49,3 +61,5 @@ export default function Home() {
     
   )
 }
+
+
