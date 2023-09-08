@@ -8,7 +8,10 @@ import OuterShell from "./components/OuterShell";
 import HeaderComponent from "./components/HeaderComponent";
 import BaseBody from "./components/BaseComponent";
 import { useState, useEffect} from "react";
+import  useSWR  from "swr";
 
+const URL = "https://fantasy.premierleague.com/api/event/1/live/"
+const fetcher = url => fetch(URL).then(r => r.json())
 
 // export async function getServerSideProps (){
   
@@ -29,6 +32,10 @@ export default function Home() {
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
  
+  const { data, error, isLoading } = useSWR(URL, fetcher)
+ 
+  if (error) return <div>failed to load</div>
+  if (isLoading) return <div>loading...</div>
 
 
 
