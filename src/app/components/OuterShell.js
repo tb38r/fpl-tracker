@@ -1,5 +1,5 @@
 export default function OuterShell(props) {
-  console.log(`URL: /${props.teamname}`);
+ 
 
   return (
     <div className="flex flex-col p-2 h-full justify-center items-center gap-2 ">

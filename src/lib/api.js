@@ -1,12 +1,15 @@
 
 
-export async function fetchData() {
+export async function fetchData(gameweek) {
 
-    const response = await fetch ('https://fantasy.premierleague.com/api/event/1/live/');
-   
-    if(!response.ok){
-      throw new Error('failed to fetch data')
-    }
-
-    return await response.json()
+  const response = await fetch(`https://fantasy.premierleague.com/api/event/${gameweek}/live/`);
+  
+  //console.log(data);
+  
+  if(!response.ok){
+    throw new Error('failed to fetch data')
+  }
+  const data = await response.json();
+  
+    return data
 }
