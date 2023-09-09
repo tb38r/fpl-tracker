@@ -4,36 +4,19 @@
 
 import TimeComponent from "./TimeComponent";
 import PositionComponent from "./PositionComponent";
-import OuterShell from "./OuterShell";
 import HeaderComponent from "./HeaderComponent";
 import BaseBody from "./BaseComponent";
-import { useState, useEffect} from "react";
-
-
-// const URL = "https://fantasy.premierleague.com/api/event/1/live/"
-// const fetcher = url => fetch(URL).then(r => r.json())
-
-// export async function getServerSideProps (){
-  
-//     const response = await fetch("https://fantasy.premierleague.com/api/event/1/live/");
-//     const data = await response.json();
-    
-//     console.log(data);
-
-//     return{
-//       props:{
-//         data
-//       }
-//     }
-// }
+import { useState} from "react";
 
 
 export default function Home(props) {
+
+  console.log('Api Data', props.apiData);
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
  
 
-console.log('From Home -->', props.apiData);
+
 
   return (
     

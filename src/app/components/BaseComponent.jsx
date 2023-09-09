@@ -1,21 +1,9 @@
 
 import OuterShell from "./OuterShell";
 
+//shhould receive 4 arrays with the comp
 export default  function BaseBody(props) {
-  //const [apidata, setApiData] = useState(null);
 
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       const response = await fetch(
-//         "https://fantasy.premierleague.com/api/event/1/live/"
-//       );
-//       const data = await response.json();
-//       setApiData(data);
-//     };
-//     fetchData();
-
-
-//   }, []);
 
   return (
     <div className="h-2/5 grid gap-2 grid-cols-4 pt-20">
