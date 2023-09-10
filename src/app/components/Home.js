@@ -30,7 +30,13 @@ for (const item of sortedByPoints) {
      data.points = gwItem.stats.total_points
      data.position = staticItem.element_type
      data.name = staticItem.web_name
-     data.team = props.static.teams.filter((val)=> val.code === staticItem.team_code) 
+     data.team = props.static.teams.filter((val) => {
+      if (staticItem.team_code === val.code){
+        return val
+      }
+
+
+     })[0].name;
   gwArr.push(data)
     }
 
