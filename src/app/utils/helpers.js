@@ -23,3 +23,31 @@ export function SortedByPoints(arr) {
 export function TopEight(arr) {
   return arr.map((item) => item.slice(0, 8));
 }
+
+//  SortedWithValues(sortedByPoints, props.static));
+
+export function SortedWithValues(arr, props){
+  let res = [];
+  for (const item of arr) {
+    let gwArr = [];
+    for (const gwItem of item) {
+      for (const staticItem of props.elements) {
+        if (gwItem.id === staticItem.id) {
+          let data = {};
+          data.id = staticItem.id;
+          data.points = gwItem.stats.total_points;
+          data.position = staticItem.element_type;
+          data.name = staticItem.web_name;
+          data.team = props.teams.filter((val) => {
+            if (staticItem.team_code === val.code) {
+              return val;
+            }
+          })[0].name;
+          gwArr.push(data);
+        }
+      }
+    }
+    res.push(gwArr);
+  }
+  return res
+}
