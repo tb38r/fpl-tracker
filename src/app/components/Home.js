@@ -9,38 +9,52 @@ import { SortedByPoints, TopEight, SortedWithValues } from "../utils/helpers";
 
 export default function Home(props) {
   let sortedByPoints = SortedByPoints(props.apiData);
-  console.log("sbp", sortedByPoints);
-  // let res = [];
-  // let count = 1;
-  // for (const item of sortedByPoints) {
-  //   let gwArr = [];
-  //   for (const gwItem of item) {
-  //     for (const staticItem of props.static.elements) {
-  //       if (gwItem.id === staticItem.id) {
-  //         let data = {};
-  //         data.id = staticItem.id;
-  //         data.points = gwItem.stats.total_points;
-  //         data.position = staticItem.element_type;
-  //         data.name = staticItem.web_name;
-  //         data.team = props.static.teams.filter((val) => {
-  //           if (staticItem.team_code === val.code) {
-  //             return val;
-  //           }
-  //         })[0].name;
-  //         gwArr.push(data);
-  //       }
-  //     }
-  //   }
-  //   res.push(gwArr);
-  //   //console.log('gwitem', gwItem);
-  // }
+  let sortedWithValues = SortedWithValues(sortedByPoints, props.static);
+  console.log("sortedWithVals", sortedWithValues);
 
-  console.log("Res??", SortedWithValues(sortedByPoints, props.static));
+  function sortedByPosition(arr) {
+    let result = [];
 
-  let Top8 = TopEight(sortedByPoints);
-  console.log("Top8", Top8);
+    for (const gwArr of arr) {
+      
+      let innerArr = {};
+      let Gk = [];
+      let Def = [];
+      let Mf = [];
+      let Fw = [];
+      for (const player of gwArr) {
+  
+        switch (player.position) {
+          case 1:
+            Gk.push(player);
+            break;
+          case 2:
+            Def.push(player);
+            break;
+          case 3:
+            Mf.push(player);
+            break;
+          case 4:
+            Fw.push(player);
+            break;
+        }
+      
 
-  console.log("static", props.static);
+        innerArr.goalkeepers = Gk;
+        innerArr.defenders = Def;
+        innerArr.midfielders = Mf;
+        innerArr.forwards = Fw;
+      }
+      result.push(innerArr);
+  }
+    return result;
+  }
+
+  console.log('SortedByPosition', sortedByPosition(sortedWithValues));
+
+
+  // let Top8 = TopEight(sortedWithValues);
+  // console.log("Top8", Top8);
 
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
