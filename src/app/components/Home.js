@@ -5,7 +5,7 @@
 import TimeComponent from "./TimeComponent";
 import PositionComponent from "./PositionComponent";
 import HeaderComponent from "./HeaderComponent";
-import BaseBody from "./BaseComponent";
+import ResultsComponent from "./BaseComponent";
 import { useState} from "react";
 import { SortedByPoints, TopEight } from "../utils/helpers";
 
@@ -17,10 +17,36 @@ export default function Home(props) {
 
 let sortedByPoints = SortedByPoints(props.apiData)
 console.log('sbp', sortedByPoints);
+let res = []
+let count = 1
+for (const item of sortedByPoints) {
+  let gwArr = []
+  for (const gwItem of item) {
+    for (const staticItem of props.static.elements) {
+
+    if (gwItem.id === staticItem.id){
+      let data ={}
+     data.id = staticItem.id
+     data.points = gwItem.stats.total_points
+     data.position = staticItem.element_type
+     data.name = staticItem.web_name
+     data.team = props.static.teams.filter((val)=> val.code === staticItem.team_code) 
+  gwArr.push(data)
+    }
+
+    }
+      
+    }
+    res.push(gwArr)
+    //console.log('gwitem', gwItem);
+  }
+
+  console.log('Res??', res);
 
 let Top8 = TopEight(sortedByPoints)
 console.log('Top8', Top8);
 
+console.log('static', props.static);
 
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
@@ -48,7 +74,7 @@ console.log('Top8', Top8);
       </div>
       </div>
 
-     <BaseBody test='hello'/>
+     <ResultsComponent test='hello'/>
    
 
 

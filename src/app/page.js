@@ -1,10 +1,11 @@
 
 import Home from "./components/Home";
-import { fetchGameWeekData } from "@/lib/api";
+import { FetchGameWeekData, BootstrapStaticData } from "@/lib/api";
 import {GetAllGameweeksData} from "./utils/helpers";
 
 export default async function AppMain(gameweek){
- let data = await GetAllGameweeksData(fetchGameWeekData)
+ let data = await GetAllGameweeksData(FetchGameWeekData)
+ let staticData = await BootstrapStaticData()
 
  //To get players names using Id
  //element_type(1 == GK, 2= DF, 3=MF, 4=Forwards )
@@ -13,7 +14,7 @@ export default async function AppMain(gameweek){
  //https://fantasy.premierleague.com/api/bootstrap-static/
 return(
   <>
-  <Home  apiData= {data}/>
+  <Home  apiData= {data} static = {staticData}/>
   </>
 )
 }

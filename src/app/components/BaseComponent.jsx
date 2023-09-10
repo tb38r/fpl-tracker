@@ -1,8 +1,8 @@
 
 import OuterShell from "./OuterShell";
 
-//shhould receive 4 arrays with the comp
-export default  function BaseBody(props) {
+//shhould receive 8 arrays with the comp
+export default  function ResultsComponent(props) {
 
 
   return (

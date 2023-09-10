@@ -17,18 +17,7 @@ export function SortedByPoints(arr) {
     return GW.elements.sort((a, b) => b.stats.total_points - a.stats.total_points);
   });
 }
-// export function SortedByPoints(arr) {
-//   let result = [];
-//   const playerObjects = arr.map((GW) => GW.elements);
 
-//   for (const item of playerObjects) {
-//     const sortedPlayerObjects = item.sort(
-//       (a, b) => b.stats.total_points - a.stats.total_points
-//     );
-//     result.push(sortedPlayerObjects);
-//   }
-//   return result;
-// }
 
 //should return an arr of arr[8]s
 export function TopEight(arr) {
