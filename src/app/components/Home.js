@@ -7,11 +7,21 @@ import PositionComponent from "./PositionComponent";
 import HeaderComponent from "./HeaderComponent";
 import BaseBody from "./BaseComponent";
 import { useState} from "react";
+import { SortedByPoints, TopEight } from "../utils/helpers";
+
+
 
 
 export default function Home(props) {
 
-  console.log('Api Data', props.apiData);
+
+let sortedByPoints = SortedByPoints(props.apiData)
+console.log('sbp', sortedByPoints);
+
+let Top8 = TopEight(sortedByPoints)
+console.log('Top8', Top8);
+
+
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
  

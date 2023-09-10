@@ -1,10 +1,10 @@
 
 import Home from "./components/Home";
-import { fetchData } from "@/lib/api";
-import GetGameweekData from "./utils/helpers";
+import { fetchGameWeekData } from "@/lib/api";
+import {GetAllGameweeksData} from "./utils/helpers";
 
 export default async function AppMain(gameweek){
- let data = await GetGameweekData(fetchData)
+ let data = await GetAllGameweeksData(fetchGameWeekData)
 
  //To get players names using Id
  //element_type(1 == GK, 2= DF, 3=MF, 4=Forwards )

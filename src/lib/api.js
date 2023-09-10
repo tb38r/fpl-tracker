@@ -1,6 +1,6 @@
 
 
-export async function fetchData(gameweek) {
+export async function fetchGameWeekData(gameweek) {
 
   const response = await fetch(`https://fantasy.premierleague.com/api/event/${gameweek}/live/`);
 
