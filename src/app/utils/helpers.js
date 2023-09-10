@@ -51,3 +51,43 @@ export function SortedWithValues(arr, props){
   }
   return res
 }
+
+
+
+export function SortedByPosition(arr) {
+  let result = [];
+
+  for (const gwArr of arr) {
+    
+    let innerArr = {};
+    let Gk = [];
+    let Def = [];
+    let Mf = [];
+    let Fw = [];
+    for (const player of gwArr) {
+
+      switch (player.position) {
+        case 1:
+          Gk.push(player);
+          break;
+        case 2:
+          Def.push(player);
+          break;
+        case 3:
+          Mf.push(player);
+          break;
+        case 4:
+          Fw.push(player);
+          break;
+      }
+    
+
+      innerArr.goalkeepers = Gk;
+      innerArr.defenders = Def;
+      innerArr.midfielders = Mf;
+      innerArr.forwards = Fw;
+    }
+    result.push(innerArr);
+}
+  return result;
+}
