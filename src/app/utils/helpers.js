@@ -23,9 +23,12 @@ export function SortedByPoints(arr) {
 }
 
 //should return an arr of arr[8]s
-export function TopEight(arr) {
-  return arr.map((item) => item.slice(0, 8));
-}
+export function GetLastXElements(arr, num) {
+  if (num >= 0 && arr.length >= num) {
+    return arr.slice(-num);
+  } else {
+    return [];
+  }}
 
 //  SortedWithValues(sortedByPoints, props.static));
 
@@ -60,7 +63,6 @@ export function SortedByPosition(arr) {
 
   for (const gwArr of arr) {
     let innerArr = {};
-   // let Gk = [];
     let Gk = {};
     let Def = {};
     let Mf = {};
@@ -68,23 +70,16 @@ export function SortedByPosition(arr) {
     for (const player of gwArr) {
       switch (player.position) {
         case 1:
-        //  Gk.push(player);
           Gk[player.id] = player;
           break;
         case 2:
-        //  Def.push(player);
-        // defenders["2"]
-        Def[player.id] = player;
-
+          Def[player.id] = player;
           break;
         case 3:
           Mf[player.id] = player;
-
-         // Mf.push(player);
           break;
         case 4:
           Fw[player.id] = player;
-        //  Fw.push(player);
           break;
       }
 
@@ -96,4 +91,9 @@ export function SortedByPosition(arr) {
     result.push(innerArr);
   }
   return result;
+}
+
+export function Round(value, precision) {
+  var multiplier = Math.pow(10, precision || 0);
+  return Math.round(value * multiplier) / multiplier;
 }

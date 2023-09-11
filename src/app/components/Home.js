@@ -4,12 +4,13 @@ import TimeComponent from "./TimeComponent";
 import PositionComponent from "./PositionComponent";
 import HeaderComponent from "./HeaderComponent";
 import ResultsComponent from "./BaseComponent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   SortedByPoints,
   SortedByPosition,
-  TopEight,
+  GetLastXElements,
   SortedWithValues,
+  Round
 } from "../utils/helpers";
 
 export default function Home(props) {
@@ -20,48 +21,51 @@ export default function Home(props) {
   console.log("sortedWithVals", sortedWithValues);
   console.log("SortedByPosition", sortedByPosition);
 
-  function tallyCosts(arr) {
-    // Create an empty object to store the tallied costs.
-    const talliedCosts = {};
-
-    // Loop through the array of arrays of objects.
-    for (const arrayOfGWObjects of arr) {
-      // Loop through the array of objects.
-      for (const gwObj of arrayOfGWObjects) {
-        
-        /*
-        id: 395
-        name: "R.Varane"
-        points: 14
-        position: 2
-        team: "Man Utd"
-        */
-       
-       // Get the id of the object.
-        const id = gwObj.id;
-
-        // Get the cost of the object.
-        const cost = object.cost;
-
-        // If the id is not in the tallied costs object, add it with a cost of 0.
-        if (!talliedCosts.hasOwnProperty(id)) {
-          talliedCosts[id] = 0;
-        }
-
-        // Add the cost of the object to the cost in the tallied costs object.
-        talliedCosts[id] += cost;
-      }
-    }
-
-    // Return the tallied costs object.
-    return talliedCosts;
-  }
-
-  // let Top8 = TopEight(sortedWithValues);
-  // console.log("Top8", Top8);
-
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
+
+  console.log("Last 3", GetLastXElements(sortedByPosition, 3));
+
+  function GetThreeWeekAverage(arrOfObj) {
+    //first slice
+    const data = GetLastXElements(sortedByPosition, 3);
+    if (data.length === 0) {
+      throw "Data object of insufficent length";
+    }
+
+    let result = {};
+    let defenders = {};
+
+    //iterate throught last array
+
+    //defence
+    for (let key in data[2].defenders) {
+      if (
+        data[1].defenders.hasOwnProperty(key) &&
+        data[0].defenders.hasOwnProperty(key)
+      ) {
+        defenders[key] = data[2].defenders[key];
+        defenders[key].points =
+         Round( (data[2].defenders[key].points +
+            data[1].defenders[key].points +
+            data[0].defenders[key].points) /
+          3, 1)
+      }
+    }
+    result.defenders = defenders;
+    return defenders;
+  }
+
+
+  console.log('Three week average defenders only ', GetThreeWeekAverage(sortedByPosition));
+
+  useEffect(() => {
+    console.log("From useEffect AI -->", activeIndex);
+  }, [activeIndex]);
+
+  useEffect(() => {
+    console.log("From useEffect API -->", activePositionIndex);
+  }, [activePositionIndex]);
 
   return (
     <div className="container h-full mx-auto flex flex-col ">
