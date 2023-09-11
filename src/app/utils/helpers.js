@@ -1,3 +1,5 @@
+import { Plaster } from "next/font/google";
+
 export async function GetAllGameweeksData(fn) {
   let result = [];
 
@@ -14,10 +16,11 @@ export async function GetAllGameweeksData(fn) {
 //to test, are values returned in ascending order as expected
 export function SortedByPoints(arr) {
   return arr.map((GW) => {
-    return GW.elements.sort((a, b) => b.stats.total_points - a.stats.total_points);
+    return GW.elements.sort(
+      (a, b) => b.stats.total_points - a.stats.total_points
+    );
   });
 }
-
 
 //should return an arr of arr[8]s
 export function TopEight(arr) {
@@ -26,7 +29,7 @@ export function TopEight(arr) {
 
 //  SortedWithValues(sortedByPoints, props.static));
 
-export function SortedWithValues(arr, props){
+export function SortedWithValues(arr, props) {
   let res = [];
   for (const item of arr) {
     let gwArr = [];
@@ -49,38 +52,41 @@ export function SortedWithValues(arr, props){
     }
     res.push(gwArr);
   }
-  return res
+  return res;
 }
-
-
 
 export function SortedByPosition(arr) {
   let result = [];
 
   for (const gwArr of arr) {
-    
     let innerArr = {};
-    let Gk = [];
-    let Def = [];
-    let Mf = [];
-    let Fw = [];
+   // let Gk = [];
+    let Gk = {};
+    let Def = {};
+    let Mf = {};
+    let Fw = {};
     for (const player of gwArr) {
-
       switch (player.position) {
         case 1:
-          Gk.push(player);
+        //  Gk.push(player);
+          Gk[player.id] = player;
           break;
         case 2:
-          Def.push(player);
+        //  Def.push(player);
+        // defenders["2"]
+        Def[player.id] = player;
+
           break;
         case 3:
-          Mf.push(player);
+          Mf[player.id] = player;
+
+         // Mf.push(player);
           break;
         case 4:
-          Fw.push(player);
+          Fw[player.id] = player;
+        //  Fw.push(player);
           break;
       }
-    
 
       innerArr.goalkeepers = Gk;
       innerArr.defenders = Def;
@@ -88,6 +94,6 @@ export function SortedByPosition(arr) {
       innerArr.forwards = Fw;
     }
     result.push(innerArr);
-}
+  }
   return result;
 }
