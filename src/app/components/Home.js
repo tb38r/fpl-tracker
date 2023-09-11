@@ -10,7 +10,7 @@ import {
   SortedByPosition,
   GetLastXElements,
   SortedWithValues,
-  Round
+  GetThreeWeekAverage,
 } from "../utils/helpers";
 
 export default function Home(props) {
@@ -18,7 +18,6 @@ export default function Home(props) {
   let sortedWithValues = SortedWithValues(sortedByPoints, props.static);
   let sortedByPosition = SortedByPosition(sortedWithValues);
 
-  console.log("sortedWithVals", sortedWithValues);
   console.log("SortedByPosition", sortedByPosition);
 
   const [activeIndex, setActiveIndex] = useState(1);
@@ -26,38 +25,56 @@ export default function Home(props) {
 
   console.log("Last 3", GetLastXElements(sortedByPosition, 3));
 
-  function GetThreeWeekAverage(arrOfObj) {
-    //first slice
-    const data = GetLastXElements(sortedByPosition, 3);
-    if (data.length === 0) {
-      throw "Data object of insufficent length";
+  console.log(
+    "Three week average  only ",
+    GetThreeWeekAverage(sortedByPosition)
+  );
+
+  const inputObject = {
+    a: {
+      2: { name: 'x', age: 20 },
+      3: { name: 't', age: 37 },
+    },
+    b: {
+      4: { name: 'b', age: 24 },
+      5: { name: 'z', age: 29 },
+    },
+  };
+  
+  // Step 1: Convert the nested object structure into an array of objects
+  const arrayOfObjects = [];
+  for (const outerKey in inputObject) {
+    for (const innerKey in inputObject[outerKey]) {
+      arrayOfObjects.push(inputObject[outerKey][innerKey]);
     }
-
-    let result = {};
-    let defenders = {};
-
-    //iterate throught last array
-
-    //defence
-    for (let key in data[2].defenders) {
-      if (
-        data[1].defenders.hasOwnProperty(key) &&
-        data[0].defenders.hasOwnProperty(key)
-      ) {
-        defenders[key] = data[2].defenders[key];
-        defenders[key].points =
-         Round( (data[2].defenders[key].points +
-            data[1].defenders[key].points +
-            data[0].defenders[key].points) /
-          3, 1)
-      }
-    }
-    result.defenders = defenders;
-    return defenders;
   }
+  
+  // Step 2: Sort the array based on the age property
+  arrayOfObjects.sort((a, b) => b.age - a.age);
+  
+  // Step 3: Create a new object with the sorted data
+  const sortedObject = {};
+  for (let i = 0; i < arrayOfObjects.length; i++) {
+    const item = arrayOfObjects[i];
+    const outerKey = Object.keys(inputObject).find((key) => {
+      return Object.keys(inputObject[key]).some((innerKey) => {
+        return inputObject[key][innerKey].name === item.name;
+      });
+    });
+  
+    if (!sortedObject[outerKey]) {
+      sortedObject[outerKey] = {};
+    }
+  
+    sortedObject[outerKey][i + 2] = item;
+  }
+  
+  console.log('sorted object', sortedObject);
 
 
-  console.log('Three week average defenders only ', GetThreeWeekAverage(sortedByPosition));
+
+
+
 
   useEffect(() => {
     console.log("From useEffect AI -->", activeIndex);

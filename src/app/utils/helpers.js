@@ -28,7 +28,8 @@ export function GetLastXElements(arr, num) {
     return arr.slice(-num);
   } else {
     return [];
-  }}
+  }
+}
 
 //  SortedWithValues(sortedByPoints, props.static));
 
@@ -96,4 +97,93 @@ export function SortedByPosition(arr) {
 export function Round(value, precision) {
   var multiplier = Math.pow(10, precision || 0);
   return Math.round(value * multiplier) / multiplier;
+}
+
+export function GetThreeWeekAverage(arrOfObj) {
+  //first slice
+  const data = GetLastXElements(arrOfObj, 3);
+  if (data.length === 0) {
+   console.log( "Data object of insufficent length")
+   return
+  }
+
+  let result = {};
+  let goalkeepers = {};
+  let defenders = {};
+  let midfielders = {};
+  let forwards = {};
+
+  //goalies
+  for (let key in data[2].goalkeepers) {
+    if (
+      data[1].goalkeepers.hasOwnProperty(key) &&
+      data[0].goalkeepers.hasOwnProperty(key)
+    ) {
+      goalkeepers[key] = data[2].goalkeepers[key];
+      goalkeepers[key].points = Round(
+        (data[2].goalkeepers[key].points +
+          data[1].goalkeepers[key].points +
+          data[0].goalkeepers[key].points) /
+          3,
+        1
+      );
+    }
+  }
+  result.goalkeepers = goalkeepers;
+
+  //defence
+  for (let key in data[2].defenders) {
+    if (
+      data[1].defenders.hasOwnProperty(key) &&
+      data[0].defenders.hasOwnProperty(key)
+    ) {
+      defenders[key] = data[2].defenders[key];
+      defenders[key].points = Round(
+        (data[2].defenders[key].points +
+          data[1].defenders[key].points +
+          data[0].defenders[key].points) /
+          3,
+        1
+      );
+    }
+  }
+  result.defenders = defenders;
+
+  //midfielders
+  for (let key in data[2].midfielders) {
+    if (
+      data[1].midfielders.hasOwnProperty(key) &&
+      data[0].midfielders.hasOwnProperty(key)
+    ) {
+      midfielders[key] = data[2].midfielders[key];
+      midfielders[key].points = Round(
+        (data[2].midfielders[key].points +
+          data[1].midfielders[key].points +
+          data[0].midfielders[key].points) /
+          3,
+        1
+      );
+    }
+  }
+  result.midfielders = midfielders;
+
+  //forwards
+  for (let key in data[2].forwards) {
+    if (
+      data[1].forwards.hasOwnProperty(key) &&
+      data[0].forwards.hasOwnProperty(key)
+    ) {
+      forwards[key] = data[2].forwards[key];
+      forwards[key].points = Round(
+        (data[2].forwards[key].points +
+          data[1].forwards[key].points +
+          data[0].forwards[key].points) /
+          3,
+        1
+      );
+    }
+  }
+  result.forwards = forwards;
+
+  return result;
 }
