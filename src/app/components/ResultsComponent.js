@@ -2,8 +2,9 @@
 import OuterShell from "./OuterShell";
 
 //shhould receive 8 arrays with the comp
-export default  function ResultsComponent(props) {
+export default function ResultsComponent(props) {
 
+console.log('data for results', props.data);
 
   return (
     <div className="h-2/5 grid gap-2 grid-cols-4 pt-20">

@@ -187,3 +187,23 @@ export function GetThreeWeekAverage(arrOfObj) {
 
   return result;
 }
+
+
+  // Function to sort players by age for use with week average returns
+  //returns final values for to send to client
+  export function SortPlayersByPoints(arr,category) {
+  // Convert the category object into an array
+  const playersArray = Object.values(arr[category]);
+
+  // Sort the array by age
+  playersArray.sort((a, b) => b.points - a.points);
+
+
+  // Create a new object with sorted players
+  // const sortedPlayers = {};
+  // playersArray.forEach((player, index) => {
+  //   sortedPlayers[index + 1] = player;
+  // });
+
+  return playersArray;
+}

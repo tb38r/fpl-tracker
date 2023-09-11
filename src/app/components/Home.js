@@ -3,7 +3,7 @@
 import TimeComponent from "./TimeComponent";
 import PositionComponent from "./PositionComponent";
 import HeaderComponent from "./HeaderComponent";
-import ResultsComponent from "./BaseComponent";
+import ResultsComponent from "./ResultsComponent";
 import { useEffect, useState } from "react";
 import {
   SortedByPoints,
@@ -11,77 +11,60 @@ import {
   GetLastXElements,
   SortedWithValues,
   GetThreeWeekAverage,
+  SortPlayersByPoints,
 } from "../utils/helpers";
 
 export default function Home(props) {
   let sortedByPoints = SortedByPoints(props.apiData);
   let sortedWithValues = SortedWithValues(sortedByPoints, props.static);
   let sortedByPosition = SortedByPosition(sortedWithValues);
-
-  console.log("SortedByPosition", sortedByPosition);
+  let threeWeekAverage = GetThreeWeekAverage(sortedByPosition);
 
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
+  const [dataForResults, setDataForResults] = useState([]);
 
-  console.log("Last 3", GetLastXElements(sortedByPosition, 3));
+  //console.log("Three week average  only ", threeWeekAverage);
 
-  console.log(
-    "Three week average  only ",
-    GetThreeWeekAverage(sortedByPosition)
+  // Sort players in each category by age
+  const sortedGoalkeepers = SortPlayersByPoints(
+    threeWeekAverage,
+    "goalkeepers"
   );
+  const sortedDefenders = SortPlayersByPoints(threeWeekAverage, "defenders");
+  const sortedMidfielders = SortPlayersByPoints(
+    threeWeekAverage,
+    "midfielders"
+  );
+  const sortedForwards = SortPlayersByPoints(threeWeekAverage, "forwards");
 
-  const inputObject = {
-    a: {
-      2: { name: 'x', age: 20 },
-      3: { name: 't', age: 37 },
-    },
-    b: {
-      4: { name: 'b', age: 24 },
-      5: { name: 'z', age: 29 },
-    },
-  };
-  
-  // Step 1: Convert the nested object structure into an array of objects
-  const arrayOfObjects = [];
-  for (const outerKey in inputObject) {
-    for (const innerKey in inputObject[outerKey]) {
-      arrayOfObjects.push(inputObject[outerKey][innerKey]);
-    }
-  }
-  
-  // Step 2: Sort the array based on the age property
-  arrayOfObjects.sort((a, b) => b.age - a.age);
-  
-  // Step 3: Create a new object with the sorted data
-  const sortedObject = {};
-  for (let i = 0; i < arrayOfObjects.length; i++) {
-    const item = arrayOfObjects[i];
-    const outerKey = Object.keys(inputObject).find((key) => {
-      return Object.keys(inputObject[key]).some((innerKey) => {
-        return inputObject[key][innerKey].name === item.name;
-      });
-    });
-  
-    if (!sortedObject[outerKey]) {
-      sortedObject[outerKey] = {};
-    }
-  
-    sortedObject[outerKey][i + 2] = item;
-  }
-  
-  console.log('sorted object', sortedObject);
-
-
-
-
-
+  // Resulting sorted objects
+   //console.log("GKs Sort", sortedGoalkeepers);
+  // console.log("DFs Sort", sortedDefenders);
+  // console.log("Mfs Sort", sortedMidfielders);
+  // console.log("FWs Sort", sortedForwards);
 
   useEffect(() => {
     console.log("From useEffect AI -->", activeIndex);
   }, [activeIndex]);
 
   useEffect(() => {
-    console.log("From useEffect API -->", activePositionIndex);
+    if (activeIndex === "1") {
+      if (activePositionIndex ==="1") {
+        setDataForResults(sortedGoalkeepers.slice(0,3));
+      }
+      if (activePositionIndex === "2") {
+        setDataForResults(sortedDefenders.slice(0,3));
+      }
+      if (activePositionIndex === "3") {
+        setDataForResults(sortedMidfielders.slice(0,3));
+      }
+
+      if (activePositionIndex === "4") {
+        setDataForResults(sortedForwards.slice(0,3));
+      }
+    }
+   // console.log("From useEffect API -->", activePositionIndex);
   }, [activePositionIndex]);
 
   return (
@@ -137,7 +120,7 @@ export default function Home(props) {
         </div>
       </div>
 
-      <ResultsComponent test="hello" />
+      <ResultsComponent data={dataForResults} />
     </div>
   );
 }
