@@ -5,3 +5,5 @@ ci/cd pipelines
 testing 
 
 responsiveness
+
+Honourables component styling 

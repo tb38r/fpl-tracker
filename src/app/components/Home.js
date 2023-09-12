@@ -24,19 +24,19 @@ export default function Home(props) {
   const [activePositionIndex, setActivePositionIndex] = useState(1);
   const [dataForResults, setDataForResults] = useState([]);
 
-  //console.log("Three week average  only ", threeWeekAverage);
 
+  
   // Sort players in each category by age
-  const sortedGoalkeepers = SortPlayersByPoints(
+  const sorted3WGoalkeepers = SortPlayersByPoints(
     threeWeekAverage,
     "goalkeepers"
   );
-  const sortedDefenders = SortPlayersByPoints(threeWeekAverage, "defenders");
-  const sortedMidfielders = SortPlayersByPoints(
+  const sorted3WDefenders = SortPlayersByPoints(threeWeekAverage, "defenders");
+  const sorted3WMidfielders = SortPlayersByPoints(
     threeWeekAverage,
     "midfielders"
   );
-  const sortedForwards = SortPlayersByPoints(threeWeekAverage, "forwards");
+  const sorted3WForwards = SortPlayersByPoints(threeWeekAverage, "forwards");
 
   // Resulting sorted objects
    //console.log("GKs Sort", sortedGoalkeepers);
@@ -44,28 +44,29 @@ export default function Home(props) {
   // console.log("Mfs Sort", sortedMidfielders);
   // console.log("FWs Sort", sortedForwards);
 
-  useEffect(() => {
-    console.log("From useEffect AI -->", activeIndex);
-  }, [activeIndex]);
+
 
   useEffect(() => {
     if (activeIndex === "1") {
       if (activePositionIndex ==="1") {
-        setDataForResults(sortedGoalkeepers.slice(0,3));
+        setDataForResults(sorted3WGoalkeepers.slice(0,8));
       }
       if (activePositionIndex === "2") {
-        setDataForResults(sortedDefenders.slice(0,3));
+        setDataForResults(sorted3WDefenders.slice(0,8));
       }
       if (activePositionIndex === "3") {
-        setDataForResults(sortedMidfielders.slice(0,3));
+        setDataForResults(sorted3WMidfielders.slice(0,8));
       }
 
       if (activePositionIndex === "4") {
-        setDataForResults(sortedForwards.slice(0,3));
+        setDataForResults(sorted3WForwards.slice(0,8));
       }
     }
    // console.log("From useEffect API -->", activePositionIndex);
-  }, [activePositionIndex]);
+   //   console.log("From useEffect AI -->", activeIndex);
+
+// eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ activeIndex, activePositionIndex]);
 
   return (
     <div className="container h-full mx-auto flex flex-col ">
