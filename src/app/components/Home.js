@@ -13,25 +13,23 @@ import {
   GetFiveWeekAverage,
   SortPlayersByPoints,
 } from "../utils/helpers";
+import cloneDeep from "lodash.clonedeep";
 
 export default function Home(props) {
   let sortedByPoints = SortedByPoints(props.apiData);
-
-  let pointsCopy = structuredClone(sortedByPoints)
- // console.log('sortedbypoints -->', sortedByPoints);
   let sortedWithValues = SortedWithValues(sortedByPoints, props.static);
   let sortedByPosition = SortedByPosition(sortedWithValues);
    console.log('sortedbyposition', sortedByPosition);
 
- let sortedByPositionCopy =  SortedByPosition(sortedWithValues)
+ let sortedByPositionCopy =  cloneDeep(sortedByPosition)
  console.log('COPY', sortedByPositionCopy);
 
 
- let threeWeekAverage = GetThreeWeekAverage(sortedByPositionCopy);
+ let threeWeekAverage = GetThreeWeekAverage(sortedByPosition);
 
 
-GetFiveWeekAverage( SortedByPosition(sortedWithValues))
-  
+GetFiveWeekAverage( sortedByPositionCopy)
+
 
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
