@@ -8,17 +8,30 @@ import { useEffect, useState } from "react";
 import {
   SortedByPoints,
   SortedByPosition,
-  GetLastXElements,
   SortedWithValues,
   GetThreeWeekAverage,
+  GetFiveWeekAverage,
   SortPlayersByPoints,
 } from "../utils/helpers";
 
 export default function Home(props) {
   let sortedByPoints = SortedByPoints(props.apiData);
+
+  let pointsCopy = structuredClone(sortedByPoints)
+ // console.log('sortedbypoints -->', sortedByPoints);
   let sortedWithValues = SortedWithValues(sortedByPoints, props.static);
   let sortedByPosition = SortedByPosition(sortedWithValues);
-  let threeWeekAverage = GetThreeWeekAverage(sortedByPosition);
+   console.log('sortedbyposition', sortedByPosition);
+
+ let sortedByPositionCopy =  SortedByPosition(sortedWithValues)
+ console.log('COPY', sortedByPositionCopy);
+
+
+ let threeWeekAverage = GetThreeWeekAverage(sortedByPositionCopy);
+
+
+GetFiveWeekAverage( SortedByPosition(sortedWithValues))
+  
 
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
@@ -38,11 +51,7 @@ export default function Home(props) {
   );
   const sorted3WForwards = SortPlayersByPoints(threeWeekAverage, "forwards");
 
-  // Resulting sorted objects
-   //console.log("GKs Sort", sortedGoalkeepers);
-  // console.log("DFs Sort", sortedDefenders);
-  // console.log("Mfs Sort", sortedMidfielders);
-  // console.log("FWs Sort", sortedForwards);
+
 
 
 
