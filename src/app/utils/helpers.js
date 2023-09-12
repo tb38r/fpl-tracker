@@ -189,16 +189,19 @@ export function GetThreeWeekAverage(arrOfObj) {
 }
 
 
-export function GetFiveWeekAverage(arrOfObj) {
-  console.log('ARRRR', arrOfObj);
+export function GetFiveWeekAverage(obj) {
+
+  let arrOfObj =  JSON.parse(JSON.stringify(obj))
+  console.log('ARRRR',arrOfObj);
   //first slice
-  const data = arrOfObj.length >= 5 ? GetLastXElements([...arrOfObj], 5): GetLastXElements([...arrOfObj], arrOfObj.length)
+  const data = arrOfObj.length >= 5 ? GetLastXElements( arrOfObj, 5): GetLastXElements( arrOfObj, arrOfObj.length)
+  
   if (data.length === 0) {
    console.log( "Data object of insufficent length")
    return
   }
 
-  console.log('data from 5 week', data);
+  console.log('data from 5 week', arrOfObj);
 
   let result = {};
   let goalkeepers = {};
@@ -206,33 +209,33 @@ export function GetFiveWeekAverage(arrOfObj) {
   let midfielders = {};
   let forwards = {};
 
-  let dataLength =  arrOfObj.length
+  // let dataLength =  arrOfObj.length
 
 
-     for(let key in data[dataLength-1].goalkeepers){
+  //    for(let key in data[dataLength-1].goalkeepers){
   
-            goalkeepers[key] =data[dataLength-1].goalkeepers[key]
-          //  goalkeepers[key].points = data[dataLength-1].goalkeepers.points+data[dataLength-2].goalkeepers.points
-     }
+  //           goalkeepers[key] =data[dataLength-1].goalkeepers[key]
+  //         //  goalkeepers[key].points = data[dataLength-1].goalkeepers.points+data[dataLength-2].goalkeepers.points
+  //    }
      
-     console.log('goalies', goalkeepers, Object.keys(goalkeepers).length,Object.keys(data[dataLength-1].goalkeepers).length );
+  //    console.log('goalies', goalkeepers, Object.keys(goalkeepers).length,Object.keys(data[dataLength-1].goalkeepers).length );
   
-     let dataLess = dataLength -1
+  //    let dataLess = dataLength -1
 
-     for(let i=dataLess; i >= 0 ; i--){
-      for(let key in goalkeepers){
-        if(data[i].goalkeepers.hasOwnProperty(key)){
-          goalkeepers[key].points = goalkeepers[key].points +
-           data[i].goalkeepers[key].points
-        }else{
-             delete goalkeepers[key]
-         }
+  //    for(let i=dataLess; i >= 0 ; i--){
+  //     for(let key in goalkeepers){
+  //       if(data[i].goalkeepers.hasOwnProperty(key)){
+  //         goalkeepers[key].points = goalkeepers[key].points +
+  //          data[i].goalkeepers[key].points
+  //       }else{
+  //            delete goalkeepers[key]
+  //        }
 
-      }
-     }
+  //     }
+  //    }
      
     
-    console.log('goalies 2!', goalkeepers, Object.keys(goalkeepers).length,Object.keys(data[dataLength-1].goalkeepers).length );
+   // console.log('goalies 2!', goalkeepers, Object.keys(goalkeepers).length,Object.keys(data[dataLength-4].goalkeepers).length );
 
 }
 
