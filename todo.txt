@@ -1,0 +1,7 @@
+peer groups
+
+ci/cd pipelines
+
+testing 
+
+responsiveness
