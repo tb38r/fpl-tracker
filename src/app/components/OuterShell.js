@@ -9,13 +9,24 @@ export default function OuterShell(props) {
     Chelsea: "chelsea",
     Brighton: "brighton",
     Arsenal: "arsenal",
-    
+    "West Ham": "westham",
+    "Sheffield Utd": "sheffieldunited",
+    "Man City": "mancity",
+    Luton: "lutontown",
+    Burnley: "burnley",
+    "Crystal Palace": "crystalpalace",
+    Bournemouth: "bournemouth",
+    Everton: "everton",
+    Fulham: "fulham",
+    "Man Utd": "manchesterunited",
+    Newcastle: "newcastleunited",
   };
 
   return (
     <div className="flex flex-col p-2 h-full justify-center items-center gap-2 ">
       <div
-        className="  h-48 w-48 rounded-full"
+        className="  h-36 w-36
+         rounded-full"
         style={{
           backgroundImage: `url(/kits/${kitImage[props.teamname]}kit.png)`,
           backgroundSize: "cover",
