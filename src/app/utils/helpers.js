@@ -408,8 +408,7 @@ export function SortPlayersByPoints(arr, category) {
 
 function ReturnAverage(arr, divisor) {
   let copiedArr = JSON.parse(JSON.stringify(arr));
-  console.log("arr pre", copiedArr);
-  let i = 5;
+
 
   for (const key in copiedArr) {
     for (const innerKey in copiedArr[key]) {

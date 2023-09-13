@@ -6,7 +6,7 @@ export default function PositionComponent(props) {
       <div
         className={`flex justify-center items-center ${
           props.activeIndex === props.index ? 'bg-red-300' : 'bg-gray-300'
-        } text-pink font-large cursor-pointer`}
+        } text-pink font-large cursor-pointer font-bold`}
         onClick={() => props.handleComponentClick(props.index)}
       >
         {position} 

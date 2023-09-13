@@ -29,7 +29,6 @@ export default function Home(props) {
   let fiveWeekAverage = GetFiveWeekAverage(copiedFiveParsed);
   let tenWeekAverage = GetTenWeekAverage(copiedTenParsed)
 
-  console.log("5 (really 4 week average", fiveWeekAverage);
 
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
@@ -73,8 +72,6 @@ export default function Home(props) {
     "midfielders"
   );
   const sorted10WForwards = SortPlayersByPoints(tenWeekAverage, "forwards");
-
-
 
 
 
@@ -135,8 +132,8 @@ export default function Home(props) {
   return (
     <div className="container h-full mx-auto flex flex-col ">
       <HeaderComponent />
-      <div className="h-1/4 pt-6 flex flex-col justify-evenly">
-        <div className="h-1/11 grid gap-4 grid-cols-3 h-20">
+      <div className=" h-1/4 pt-6 flex flex-col justify-evenly">
+        <div className="grid gap-4 grid-cols-3 h-20 ">
           <TimeComponent
             time="3"
             index="1"
