@@ -19,19 +19,18 @@ export default function Home(props) {
   let sortedByPoints = SortedByPoints(props.apiData);
   let sortedWithValues = SortedWithValues(sortedByPoints, props.static);
   let sortedByPosition = SortedByPosition(sortedWithValues);
-   console.log('sortedbyposition', sortedByPosition);
    let copiedParsed = JSON.parse(JSON.stringify( sortedByPosition))
 
  let sortedByPositionCopy =  cloneDeep(sortedByPosition)
- console.log('COPY', sortedByPositionCopy);
- console.log('COPYPARSED', copiedParsed);
 
 
 
  let threeWeekAverage = GetThreeWeekAverage(sortedByPositionCopy);
 
 
-GetFiveWeekAverage(copiedParsed)
+let fiveWeekAverage = GetFiveWeekAverage(copiedParsed)
+
+console.log('5 (really 4 week average', fiveWeekAverage);
 
 
   const [activeIndex, setActiveIndex] = useState(1);

@@ -1,3 +1,4 @@
+import cloneDeep from "lodash.clonedeep";
 import { Plaster } from "next/font/google";
 
 export async function GetAllGameweeksData(fn) {
@@ -103,8 +104,8 @@ export function GetThreeWeekAverage(arrOfObj) {
   //first slice
   const data = GetLastXElements(arrOfObj, 3);
   if (data.length === 0) {
-   console.log( "Data object of insufficent length")
-   return
+    console.log("Data object of insufficent length");
+    return;
   }
 
   let result = {};
@@ -188,20 +189,21 @@ export function GetThreeWeekAverage(arrOfObj) {
   return result;
 }
 
-
 export function GetFiveWeekAverage(obj) {
+  let arrOfObj = JSON.parse(JSON.stringify(obj));
 
-  let arrOfObj =  JSON.parse(JSON.stringify(obj))
-  console.log('ARRRR',arrOfObj);
+  let arrForSlice = JSON.parse(JSON.stringify(arrOfObj));
   //first slice
-  const data = arrOfObj.length >= 5 ? GetLastXElements( arrOfObj, 5): GetLastXElements( arrOfObj, arrOfObj.length)
-  
+  const data =
+    arrOfObj.length >= 5
+      ? GetLastXElements(arrForSlice, 5)
+      : GetLastXElements(arrForSlice, arrForSlice.length);
+
   if (data.length === 0) {
-   console.log( "Data object of insufficent length")
-   return
+    console.log("Data object of insufficent length");
+    return;
   }
 
-  console.log('data from 5 week', arrOfObj);
 
   let result = {};
   let goalkeepers = {};
@@ -209,57 +211,94 @@ export function GetFiveWeekAverage(obj) {
   let midfielders = {};
   let forwards = {};
 
-  // let dataLength =  arrOfObj.length
+  let dataLength = arrOfObj.length;
+
+  for (let key in data[dataLength - 1].goalkeepers) {
+    goalkeepers[key] = data[dataLength - 1].goalkeepers[key];
+  }
+
+  for (let key in data[dataLength - 1].defenders) {
+    defenders[key] = data[dataLength - 1].defenders[key];
+  }
+
+  for (let key in data[dataLength - 1].midfielders) {
+    midfielders[key] = data[dataLength - 1].midfielders[key];
+  }
+
+  for (let key in data[dataLength - 1].forwards) {
+    forwards[key] = data[dataLength - 1].forwards[key];
+  }
 
 
-  //    for(let key in data[dataLength-1].goalkeepers){
-  
-  //           goalkeepers[key] =data[dataLength-1].goalkeepers[key]
-  //         //  goalkeepers[key].points = data[dataLength-1].goalkeepers.points+data[dataLength-2].goalkeepers.points
-  //    }
-     
-  //    console.log('goalies', goalkeepers, Object.keys(goalkeepers).length,Object.keys(data[dataLength-1].goalkeepers).length );
-  
-  //    let dataLess = dataLength -1
+  let dataLess = dataLength - 2;
+  let arrForLoop = cloneDeep(arrForSlice);
 
-  //    for(let i=dataLess; i >= 0 ; i--){
-  //     for(let key in goalkeepers){
-  //       if(data[i].goalkeepers.hasOwnProperty(key)){
-  //         goalkeepers[key].points = goalkeepers[key].points +
-  //          data[i].goalkeepers[key].points
-  //       }else{
-  //            delete goalkeepers[key]
-  //        }
 
-  //     }
-  //    }
-     
-    
-   // console.log('goalies 2!', goalkeepers, Object.keys(goalkeepers).length,Object.keys(data[dataLength-4].goalkeepers).length );
+  for (let i = dataLess; i >= 0; i--) {
+    for (let key in goalkeepers) {
+      if (arrForLoop[i].goalkeepers.hasOwnProperty(key)) {
+        goalkeepers[key].points =
+          goalkeepers[key].points + arrForLoop[i].goalkeepers[key].points;
+      } else {
+        delete goalkeepers[key];
+      }
+    }
+  }
 
+  result.goalkeepers = goalkeepers
+
+  for (let i = dataLess; i >= 0; i--) {
+    for (let key in defenders) {
+      if (arrForLoop[i].defenders.hasOwnProperty(key)) {
+        defenders[key].points =
+          defenders[key].points + arrForLoop[i].defenders[key].points;
+      } else {
+        delete defenders[key];
+      }
+    }
+  }
+
+  result.defenders = defenders
+
+
+  for (let i = dataLess; i >= 0; i--) {
+    for (let key in midfielders) {
+      if (arrForLoop[i].midfielders.hasOwnProperty(key)) {
+        midfielders[key].points =
+          midfielders[key].points + arrForLoop[i].midfielders[key].points;
+      } else {
+        delete midfielders[key];
+      }
+    }
+  }
+
+  result.midfielders = midfielders
+
+  for (let i = dataLess; i >= 0; i--) {
+    for (let key in forwards) {
+      if (arrForLoop[i].forwards.hasOwnProperty(key)) {
+        forwards[key].points =
+          forwards[key].points + arrForLoop[i].forwards[key].points;
+      } else {
+        delete forwards[key];
+      }
+    }
+  }
+
+  result.forwards = forwards
+
+
+  return result
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-  // Function to sort players by age for use with week average returns
-  //returns final values for to send to client
-  export function SortPlayersByPoints(arr,category) {
+// Function to sort players by age for use with week average returns
+//returns final values for to send to client
+export function SortPlayersByPoints(arr, category) {
   // Convert the category object into an array
   const playersArray = Object.values(arr[category]);
 
   // Sort the array by age
   playersArray.sort((a, b) => b.points - a.points);
-
 
   // Create a new object with sorted players
   // const sortedPlayers = {};
