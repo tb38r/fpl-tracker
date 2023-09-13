@@ -25,7 +25,7 @@ export default function OuterShell(props) {
   return (
     <div className="flex flex-col p-2 h-full justify-center items-center gap-2 ">
       <div
-        className="  h-36 w-36
+        className="  h-32 w-32
          rounded-full"
         style={{
           backgroundImage: `url(/kits/${kitImage[props.teamname]}kit.png)`,
