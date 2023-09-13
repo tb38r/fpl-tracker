@@ -130,7 +130,7 @@ export default function Home(props) {
   }, [activeIndex, activePositionIndex]);
 
   return (
-    <div className="container h-full mx-auto flex flex-col ">
+    <div className="container h-full mx-auto flex flex-col justify-center ">
       <HeaderComponent />
       <div className=" h-1/4 pt-6 flex flex-col justify-evenly">
         <div className="grid gap-4 grid-cols-3 h-20 ">
