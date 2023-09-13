@@ -1,9 +1,5 @@
 
 
-instructions on homepage
-
-peer groups
-
 ci/cd pipelines
 
 testing 
