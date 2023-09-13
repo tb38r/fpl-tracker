@@ -10,4 +10,3 @@ testing
 
 responsiveness
 
-Honourables component styling 

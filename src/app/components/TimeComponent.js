@@ -8,8 +8,8 @@ export default function TimeComponent(props) {
 
   return (
     <div
-      className={`flex justify-center items-center ${
-        props.activeIndex === props.index ? 'bg-green-300' : 'bg-gray-300'
+      className={`flex justify-center items-center hover:bg-emerald-400  ${
+        props.activeIndex === props.index ? 'bg-emerald-700' : 'bg-gray-300'
       } text-pink font-large cursor-pointer font-bold`}
       onClick={() => props.handleComponentClick(props.index)}
     >
