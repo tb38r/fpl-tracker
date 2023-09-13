@@ -204,7 +204,6 @@ export function GetFiveWeekAverage(obj) {
     return;
   }
 
-
   let result = {};
   let goalkeepers = {};
   let defenders = {};
@@ -229,10 +228,8 @@ export function GetFiveWeekAverage(obj) {
     forwards[key] = data[dataLength - 1].forwards[key];
   }
 
-
   let dataLess = dataLength - 2;
   let arrForLoop = cloneDeep(arrForSlice);
-
 
   for (let i = dataLess; i >= 0; i--) {
     for (let key in goalkeepers) {
@@ -245,7 +242,7 @@ export function GetFiveWeekAverage(obj) {
     }
   }
 
-  result.goalkeepers = goalkeepers
+  result.goalkeepers = goalkeepers;
 
   for (let i = dataLess; i >= 0; i--) {
     for (let key in defenders) {
@@ -258,8 +255,7 @@ export function GetFiveWeekAverage(obj) {
     }
   }
 
-  result.defenders = defenders
-
+  result.defenders = defenders;
 
   for (let i = dataLess; i >= 0; i--) {
     for (let key in midfielders) {
@@ -272,7 +268,7 @@ export function GetFiveWeekAverage(obj) {
     }
   }
 
-  result.midfielders = midfielders
+  result.midfielders = midfielders;
 
   for (let i = dataLess; i >= 0; i--) {
     for (let key in forwards) {
@@ -285,10 +281,9 @@ export function GetFiveWeekAverage(obj) {
     }
   }
 
-  result.forwards = forwards
+  result.forwards = forwards;
 
-
-  return result
+  return ReturnAverage(result, dataLength);
 }
 
 // Function to sort players by age for use with week average returns
@@ -307,4 +302,25 @@ export function SortPlayersByPoints(arr, category) {
   // });
 
   return playersArray;
+}
+
+function ReturnAverage(arr, divisor) {
+  let copiedArr = JSON.parse(JSON.stringify(arr));
+  console.log("arr pre", copiedArr);
+  let i = 5;
+
+  for (const key in copiedArr) {
+    for (const innerKey in copiedArr[key]) {
+      for (let varKey in copiedArr[key][innerKey]) {
+        if (varKey === "points" && copiedArr[key][innerKey][varKey] > 0) {
+          copiedArr[key][innerKey][varKey] = Round(
+            copiedArr[key][innerKey][varKey] / divisor,
+            1
+          );
+        }
+      }
+    }
+  }
+
+  return copiedArr;
 }

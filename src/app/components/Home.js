@@ -51,6 +51,19 @@ console.log('5 (really 4 week average', fiveWeekAverage);
   );
   const sorted3WForwards = SortPlayersByPoints(threeWeekAverage, "forwards");
 
+  const sorted5WGoalkeepers = SortPlayersByPoints(
+    fiveWeekAverage,
+    "goalkeepers"
+  );
+  const sorted5WDefenders = SortPlayersByPoints(fiveWeekAverage, "defenders");
+  const sorted5WMidfielders = SortPlayersByPoints(
+    fiveWeekAverage,
+    "midfielders"
+  );
+  const sorted5WForwards = SortPlayersByPoints(fiveWeekAverage, "forwards");
+
+  
+
 
 
 
@@ -71,8 +84,23 @@ console.log('5 (really 4 week average', fiveWeekAverage);
         setDataForResults(sorted3WForwards.slice(0,8));
       }
     }
-   // console.log("From useEffect API -->", activePositionIndex);
-   //   console.log("From useEffect AI -->", activeIndex);
+    
+
+    if (activeIndex === "2") {
+      if (activePositionIndex ==="1") {
+        setDataForResults(sorted5WGoalkeepers.slice(0,8));
+      }
+      if (activePositionIndex === "2") {
+        setDataForResults(sorted5WDefenders.slice(0,8));
+      }
+      if (activePositionIndex === "3") {
+        setDataForResults(sorted5WMidfielders.slice(0,8));
+      }
+
+      if (activePositionIndex === "4") {
+        setDataForResults(sorted5WForwards.slice(0,8));
+      }
+    }
 
 // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ activeIndex, activePositionIndex]);
