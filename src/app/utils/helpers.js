@@ -1,5 +1,4 @@
 import cloneDeep from "lodash.clonedeep";
-import { Plaster } from "next/font/google";
 
 export async function GetAllGameweeksData(fn) {
   let result = [];
@@ -286,8 +285,6 @@ export function GetFiveWeekAverage(obj) {
   return ReturnAverage(result, dataLength);
 }
 
-
-
 export function GetTenWeekAverage(obj) {
   let arrOfObj = JSON.parse(JSON.stringify(obj));
 
@@ -385,9 +382,6 @@ export function GetTenWeekAverage(obj) {
   return ReturnAverage(result, dataLength);
 }
 
-
-
-
 // Function to sort players by age for use with week average returns
 //returns final values for to send to client
 export function SortPlayersByPoints(arr, category) {
@@ -408,7 +402,6 @@ export function SortPlayersByPoints(arr, category) {
 
 function ReturnAverage(arr, divisor) {
   let copiedArr = JSON.parse(JSON.stringify(arr));
-
 
   for (const key in copiedArr) {
     for (const innerKey in copiedArr[key]) {
