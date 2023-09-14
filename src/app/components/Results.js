@@ -2,7 +2,7 @@ import OuterShell from "./OuterShell";
 import Honourables from "./Honourables";
 
 //shhould receive an obj with 8 arrays with the comp
-export default function ResultsComponent(props) {
+export default function Results(props) {
   console.log("from res -->", !!props.data.length);
 
   return (

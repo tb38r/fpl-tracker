@@ -1,7 +1,6 @@
-import { func } from "prop-types";
 
 
-export default function HeaderComponent(){
+export default function Header(){
     return(
         <header   style={{
             backgroundImage: `url(/tacticsboardsmall.png)`,

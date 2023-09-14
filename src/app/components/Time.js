@@ -2,7 +2,7 @@
 
 
 
-export default function TimeComponent(props) {
+export default function Time(props) {
   const { time, index } = props;
 
 

@@ -1,5 +1,5 @@
 
-export default function PositionComponent(props) {
+export default function Position(props) {
     const { position, index } = props;
   
     return (

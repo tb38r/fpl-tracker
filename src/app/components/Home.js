@@ -1,9 +1,9 @@
 "use client";
 
-import TimeComponent from "./TimeComponent";
-import PositionComponent from "./PositionComponent";
-import HeaderComponent from "./HeaderComponent";
-import ResultsComponent from "./ResultsComponent";
+import Time from "./Time";
+import Position from "./Position";
+import Header from "./Header";
+import Results from "./Results";
 import { useEffect, useState } from "react";
 import {
   SortedByPoints,
@@ -131,22 +131,22 @@ export default function Home(props) {
 
   return (
     <div className="container h-full mx-auto flex flex-col justify-center ">
-      <HeaderComponent />
+      <Header />
       <div className=" h-1/4 pt-6 flex flex-col justify-evenly">
         <div className="grid gap-4 grid-cols-3 h-20 ">
-          <TimeComponent
+          <Time
             time="3"
             index="1"
             activeIndex={activeIndex}
             handleComponentClick={setActiveIndex}
           />
-          <TimeComponent
+          <Time
             time="5"
             index="2"
             activeIndex={activeIndex}
             handleComponentClick={setActiveIndex}
           />
-          <TimeComponent
+          <Time
             time="10"
             index="3"
             activeIndex={activeIndex}
@@ -155,25 +155,25 @@ export default function Home(props) {
         </div>
 
         <div className="grid gap-1 grid-cols-4 grid-rows-1 h-20 ">
-          <PositionComponent
+          <Position
             position="GOALKEEPER"
             index="1"
             activeIndex={activePositionIndex}
             handleComponentClick={setActivePositionIndex}
           />
-          <PositionComponent
+          <Position
             position="DEFENDERS"
             index="2"
             activeIndex={activePositionIndex}
             handleComponentClick={setActivePositionIndex}
           />
-          <PositionComponent
+          <Position
             position="MIDFIELDERS"
             index="3"
             activeIndex={activePositionIndex}
             handleComponentClick={setActivePositionIndex}
           />
-          <PositionComponent
+          <Position
             position="FORWARDS"
             index="4"
             activeIndex={activePositionIndex}
@@ -182,7 +182,7 @@ export default function Home(props) {
         </div>
       </div>
 
-      <ResultsComponent data={dataForResults} />
+      <Results data={dataForResults} />
     </div>
   );
 }
