@@ -3,7 +3,6 @@ import Honourables from "./Honourables";
 
 //shhould receive an obj with 8 arrays with the comp
 export default function Results(props) {
-  console.log("from res -->", !!props.data.length);
 
   return (
     <div className="h-2/5 grid gap-2 grid-cols-4 pt-20 ">
