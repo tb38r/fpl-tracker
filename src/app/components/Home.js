@@ -60,8 +60,7 @@ export default function Home(props) {
   const sorted5WForwards = SortPlayersByPoints(fiveWeekAverage, "forwards");
 
 
-  ///
-
+  
   const sorted10WGoalkeepers = SortPlayersByPoints(
     tenWeekAverage,
     "goalkeepers"
@@ -76,7 +75,7 @@ export default function Home(props) {
 
 
 
-  ///
+  
   useEffect(() => {
     if (activeIndex === "1") {
       if (activePositionIndex === "1") {
@@ -126,7 +125,6 @@ export default function Home(props) {
       }
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeIndex, activePositionIndex]);
 
   return (

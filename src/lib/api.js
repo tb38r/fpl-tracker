@@ -4,7 +4,7 @@ export async function FetchGameWeekData(gameweek) {
     { next: { revalidate: 43200 } } );
 
   if (!response.ok) {
-    throw new Error("failed to fetch data");
+    throw new Error("Failed to fetch data");
   }
   const data = await response.json();
 
@@ -18,7 +18,7 @@ export async function BootstrapStaticData() {
   );
 
   if (!response.ok) {
-    throw new Error("failed to fetch bootstrap-static data");
+    throw new Error("Failed to fetch bootstrap-static data");
   }
   const data = await response.json();
 
