@@ -1,19 +1,20 @@
-import Position from "@/app/components/Position";
+import Time from "@/app/components/Time";
+
 import {
   render,
   screen,
   fireEvent,
   cleanup,
-  waitFor,
+  
 } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 afterEach(cleanup);
 
 describe("Test position button component", () => {
-  it("Changes blue on click", () => {
+  it("Changes green on click", () => {
     const index = "1";
-    let value = "5";
+    let value = "4";
     let activeIndex = "2";
 
     function setActiveIndex(val) {
@@ -21,26 +22,25 @@ describe("Test position button component", () => {
     }
 
     const { rerender } = render(
-      <Position
-        position="defence"
+      <Time
+        time="3"
         index={index}
         handleComponentClick={() => setActiveIndex(value)}
         activeIndex={activeIndex}
       />
     );
 
-    const button = screen.getByTestId("positionButton");
+    const button = screen.getByTestId("testButton");
 
     expect(button).toHaveClass("bg-gray-300");
-    expect(button).not.toHaveClass("bg-sky-600");
-
+    expect(button).not.toHaveClass("bg-emerald-700");
 
     value = "1";
 
     fireEvent.click(button);
 
     rerender(
-      <Position
+      <Time
         position="defence"
         index={index}
         handleComponentClick={() => setActiveIndex(value)}
@@ -48,7 +48,7 @@ describe("Test position button component", () => {
       />
     );
 
-    expect(button).toHaveClass("bg-sky-600");
+    expect(button).toHaveClass("bg-emerald-700");
     expect(button).not.toHaveClass("bg-gray-300");
 
   });
