@@ -23,7 +23,7 @@ export default function Results(props) {
             select a time period{" "}
           </div>
           <div className="text-emerald-400 h-1/5 text-4xl font-bold text-center items-center flex ">
-            and then a position
+            and a position
           </div>
           <div className="text-sky-400 h-1/5 text-3xl font-bold text-center items-center flex ">
             fpl tracker will show you the highest average points earners over that period

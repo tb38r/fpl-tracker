@@ -14,14 +14,17 @@ import {
   SortPlayersByPoints,
   GetTenWeekAverage,
 } from "../utils/helpers";
-import cloneDeep from "lodash.clonedeep";
 
 export default function Home(props) {
+
+  console.log('apiData', props.apiData);
+  console.log('staticData', props.staticData);
+  
   let sortedByPoints = SortedByPoints(props.apiData);
-  let sortedWithValues = SortedWithValues(sortedByPoints, props.static);
+  let sortedWithValues = SortedWithValues(sortedByPoints, props.staticData);
   let sortedByPosition = SortedByPosition(sortedWithValues);
 
-  let sortedByPositionCopy = cloneDeep(sortedByPosition);
+  let sortedByPositionCopy = JSON.parse(JSON.stringify(sortedByPosition));
   let copiedFiveParsed = JSON.parse(JSON.stringify(sortedByPosition));
   let copiedTenParsed = JSON.parse(JSON.stringify(sortedByPosition));
 

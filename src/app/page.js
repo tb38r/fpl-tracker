@@ -10,7 +10,7 @@ export default async function AppMain(gameweek){
 
 return(
   <>
-  <Home  apiData= {data} static = {staticData}/>
+  <Home  apiData= {data} staticData = {staticData}/>
   </>
 )
 }
