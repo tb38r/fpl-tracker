@@ -124,7 +124,7 @@ export default function Home(props) {
         setDataForResults(sorted10WForwards.slice(0, 8));
       }
     }
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeIndex, activePositionIndex]);
 
   return (
