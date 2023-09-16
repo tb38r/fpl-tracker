@@ -14,17 +14,19 @@ import {
   SortPlayersByPoints,
   GetTenWeekAverage,
 } from "../utils/helpers";
+import cloneDeep from "lodash.clonedeep";
 
 export default function Home(props) {
 
-  console.log('apiData', props.apiData);
-  console.log('staticData', props.staticData);
+ // console.log('apiData', props.apiData);
+ // console.log('staticData', props.staticData);
   
   let sortedByPoints = SortedByPoints(props.apiData);
   let sortedWithValues = SortedWithValues(sortedByPoints, props.staticData);
   let sortedByPosition = SortedByPosition(sortedWithValues);
 
-  let sortedByPositionCopy = JSON.parse(JSON.stringify(sortedByPosition));
+  let sortedByPositionCopy = cloneDeep(sortedByPosition);
+  console.log('SBP', sortedByPositionCopy);
   let copiedFiveParsed = JSON.parse(JSON.stringify(sortedByPosition));
   let copiedTenParsed = JSON.parse(JSON.stringify(sortedByPosition));
 
@@ -37,11 +39,14 @@ export default function Home(props) {
   const [activePositionIndex, setActivePositionIndex] = useState(1);
   const [dataForResults, setDataForResults] = useState([]);
 
-  // Sort players in each category by age
+
+
   const sorted3WGoalkeepers = SortPlayersByPoints(
     threeWeekAverage,
     "goalkeepers"
   );
+
+
   const sorted3WDefenders = SortPlayersByPoints(threeWeekAverage, "defenders");
   const sorted3WMidfielders = SortPlayersByPoints(
     threeWeekAverage,

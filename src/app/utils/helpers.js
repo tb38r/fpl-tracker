@@ -34,12 +34,19 @@ export function GetLastXElements(arr, num) {
 //  SortedWithValues(sortedByPoints, props.static));
 
 export function SortedWithValues(arr, props) {
+    if(arr.length === 0){
+      return []
+    }
+
   let res = [];
   for (const item of arr) {
     let gwArr = [];
     for (const gwItem of item) {
       for (const staticItem of props.elements) {
         if (gwItem.id === staticItem.id) {
+          if(staticItem.id === 520){
+            console.log('520', gwItem);
+          }
           let data = {};
           data.id = staticItem.id;
           data.points = gwItem.stats.total_points;
@@ -56,6 +63,8 @@ export function SortedWithValues(arr, props) {
     }
     res.push(gwArr);
   }
+  console.log('SWV', res);
+
   return res;
 }
 
@@ -100,6 +109,7 @@ export function Round(value, precision) {
 }
 
 export function GetThreeWeekAverage(arrOfObj) {
+  //console.log('From GetThreeWeekAve', arrOfObj);
   //first slice
   const data = GetLastXElements(arrOfObj, 3);
   if (data.length === 0) {

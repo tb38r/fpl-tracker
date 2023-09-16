@@ -23,7 +23,6 @@ describe('FetchGameWeekData', () => {
     const gameweek = 1;
     const result = await FetchGameWeekData(gameweek);
 
-    console.log('result from test', result);
 
     expect(result).toEqual(mockData);
     expect(fetch).toHaveBeenCalledWith(
