@@ -6,11 +6,12 @@ import {GetAllGameweeksData} from "./utils/helpers";
 export default async function AppMain(gameweek){
  let data = await GetAllGameweeksData(FetchGameWeekData)
  let staticData = await BootstrapStaticData()
+ let gwFive = await FetchGameWeekData(5)
 
 
 return(
   <>
-  <Home  apiData= {data} staticData = {staticData}/>
+  <Home  apiData= {data} staticData = {staticData} gw={gwFive}/>
   </>
 )
 }

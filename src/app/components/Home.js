@@ -16,23 +16,31 @@ import {
 } from "../utils/helpers";
 import cloneDeep from "lodash.clonedeep";
 
+function LFL(arr){
+  return cloneDeep(arr)
+}
 export default function Home(props) {
 
- // console.log('apiData', props.apiData);
- // console.log('staticData', props.staticData);
+  console.log('GW5', props.gw);
+  //console.log('apiData',LFL(props.apiData));
+  console.log('apiData', props.apiData);
   
-  let sortedByPoints = SortedByPoints(props.apiData);
-  let sortedWithValues = SortedWithValues(sortedByPoints, props.staticData);
-  let sortedByPosition = SortedByPosition(sortedWithValues);
+  let sortedByPoints = SortedByPoints(cloneDeep(props.apiData));
+  //console.log('SBP PRE', sortedByPoints);
+
+  let sortedWithValues = SortedWithValues(cloneDeep(sortedByPoints),cloneDeep(props.staticData));
+  //console.log('SBP OG', sortedWithValues);
+  let sortedByPosition = SortedByPosition(cloneDeep(sortedWithValues));
 
   let sortedByPositionCopy = cloneDeep(sortedByPosition);
-  console.log('SBP', sortedByPositionCopy);
+  //console.log('SBP', sortedByPositionCopy);
   let copiedFiveParsed = JSON.parse(JSON.stringify(sortedByPosition));
   let copiedTenParsed = JSON.parse(JSON.stringify(sortedByPosition));
 
   let threeWeekAverage = GetThreeWeekAverage(sortedByPositionCopy);
-  let fiveWeekAverage = GetFiveWeekAverage(copiedFiveParsed);
-  let tenWeekAverage = GetTenWeekAverage(copiedTenParsed)
+   let fiveWeekAverage = GetFiveWeekAverage(copiedFiveParsed);
+   let tenWeekAverage = GetTenWeekAverage(copiedTenParsed)
+
 
 
   const [activeIndex, setActiveIndex] = useState(1);

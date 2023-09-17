@@ -8,7 +8,6 @@ export async function GetAllGameweeksData(fn) {
     if (data.elements.length === 0) break;
     result.push(data);
   }
-
   return result;
 }
 
@@ -44,9 +43,9 @@ export function SortedWithValues(arr, props) {
     for (const gwItem of item) {
       for (const staticItem of props.elements) {
         if (gwItem.id === staticItem.id) {
-          if(staticItem.id === 520){
-            console.log('520', gwItem);
-          }
+          // if(staticItem.id === 520){
+          //   console.log('520', gwItem);
+          // }
           let data = {};
           data.id = staticItem.id;
           data.points = gwItem.stats.total_points;
@@ -109,9 +108,11 @@ export function Round(value, precision) {
 }
 
 export function GetThreeWeekAverage(arrOfObj) {
-  //console.log('From GetThreeWeekAve', arrOfObj);
+  console.log('From GetThreeWeekAve', arrOfObj);
   //first slice
   const data = GetLastXElements(arrOfObj, 3);
+  //const data = arrOfObj.slice(0, 3);
+  
   if (data.length === 0) {
     console.log("Data object of insufficent length");
     return;
