@@ -14,38 +14,30 @@ import {
   SortPlayersByPoints,
   GetTenWeekAverage,
 } from "../utils/helpers";
+
 import cloneDeep from "lodash.clonedeep";
 
 export default function Home(props) {
-
- // console.log('apiData', props.apiData);
- // console.log('staticData', props.staticData);
-  
   let sortedByPoints = SortedByPoints(props.apiData);
   let sortedWithValues = SortedWithValues(sortedByPoints, props.staticData);
   let sortedByPosition = SortedByPosition(sortedWithValues);
 
   let sortedByPositionCopy = cloneDeep(sortedByPosition);
-  console.log('SBP', sortedByPositionCopy);
   let copiedFiveParsed = JSON.parse(JSON.stringify(sortedByPosition));
   let copiedTenParsed = JSON.parse(JSON.stringify(sortedByPosition));
 
   let threeWeekAverage = GetThreeWeekAverage(sortedByPositionCopy);
   let fiveWeekAverage = GetFiveWeekAverage(copiedFiveParsed);
-  let tenWeekAverage = GetTenWeekAverage(copiedTenParsed)
-
+  let tenWeekAverage = GetTenWeekAverage(copiedTenParsed);
 
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
   const [dataForResults, setDataForResults] = useState([]);
 
-
-
   const sorted3WGoalkeepers = SortPlayersByPoints(
     threeWeekAverage,
     "goalkeepers"
   );
-
 
   const sorted3WDefenders = SortPlayersByPoints(threeWeekAverage, "defenders");
   const sorted3WMidfielders = SortPlayersByPoints(
@@ -67,8 +59,6 @@ export default function Home(props) {
   );
   const sorted5WForwards = SortPlayersByPoints(fiveWeekAverage, "forwards");
 
-
-  
   const sorted10WGoalkeepers = SortPlayersByPoints(
     tenWeekAverage,
     "goalkeepers"
@@ -80,10 +70,6 @@ export default function Home(props) {
   );
   const sorted10WForwards = SortPlayersByPoints(tenWeekAverage, "forwards");
 
-
-
-
-  
   useEffect(() => {
     if (activeIndex === "1") {
       if (activePositionIndex === "1") {
