@@ -30,7 +30,6 @@ describe("Test suite of helper functions", () => {
     //simulate sorted by position
     const result = SortedByPosition(MockSortedByPointsData);
 
-    console.log("result test", result[0].goalkeepers);
 
     expect(result[0]).toHaveProperty("goalkeepers", {});
     expect(result[0]).toHaveProperty("defenders", {});
