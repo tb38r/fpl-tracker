@@ -1,4 +1,4 @@
 
-responsiveness
+responsiveness (mostly, minor on mobile with instructions, remove overscroll)
 
 about/anchor button
