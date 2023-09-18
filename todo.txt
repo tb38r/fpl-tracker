@@ -1,9 +1,4 @@
 
-
-ci/cd pipelines
-
-testing 
-
 responsiveness
 
 about/anchor button
