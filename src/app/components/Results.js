@@ -5,7 +5,7 @@ import Honourables from "./Honourables";
 export default function Results(props) {
 
   return (
-    <div className="h-2/5 grid gap-2 grid-cols-4 pt-20 ">
+    <div className="h-2/5 grid gap-2 grid-cols-4 pt-10 ">
       {!!props.data.length ? (
         props.data
           .slice(0, 3)
@@ -19,16 +19,16 @@ export default function Results(props) {
           ))
       ) : (
         <>
-          <div className="text-sky-400 h-1/5 text-4xl font-bold text-center items-center flex ">
+          <div className="text-sky-400 h-1/5 text-sm font-bold text-center items-center flex md:text-3xl ">
             select a time period{" "}
           </div>
-          <div className="text-emerald-400 h-1/5 text-4xl font-bold text-center items-center flex ">
+          <div className="text-emerald-400 h-1/5 text-sm font-bold text-center items-center flex md:text-3xl">
             and a position
           </div>
-          <div className="text-sky-400 h-1/5 text-3xl font-bold text-center items-center flex ">
+          <div className="text-sky-400 h-1/5 text-sm font-bold text-center items-center flex object-contain pt-10 md:text-2xl">
             fpl tracker will show you the highest average points earners over that period
           </div>
-          <div className="text-emerald-400 h-1/5 text-3xl font-bold text-center items-center flex ">
+          <div className="text-emerald-400 h-1/5 text-sm font-bold text-center items-center flex md:text-3xl">
 good luck with your transfers!          </div>
         </>
       )}
