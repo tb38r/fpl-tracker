@@ -124,8 +124,8 @@ export default function Home(props) {
   return (
     <div className="container h-full mx-auto flex flex-col justify-center max-w-5xl w-5/6">
       <Header />
-      <div className=" h-1/4 pt-6 flex flex-col justify-evenly md:gap-3">
-        <div className="grid gap-4 grid-cols-3 h-20 ">
+      <div className=" h-1/5 pt-6 flex flex-col justify-evenly gap-3 md:h-1/4">
+        <div className="grid gap-3 grid-cols-3 h-16 md:h-20">
           <Time
             time="3"
             index="1"
@@ -146,7 +146,7 @@ export default function Home(props) {
           />
         </div>
 
-        <div className="grid gap-1 grid-cols-4 grid-rows-1 h-20 ">
+        <div className="grid gap-3 grid-cols-4 grid-rows-1 h-16 md:h-20">
           <Position
             position="GOALKEEPER"
             index="1"

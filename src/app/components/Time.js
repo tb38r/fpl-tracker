@@ -8,9 +8,9 @@ export default function Time(props) {
 
   return (
     <div
-      className={`flex justify-center items-center hover:bg-emerald-400  ${
+      className={`flex justify-center items-center hover:bg-emerald-400 text-xs md:text-lg  ${
         props.activeIndex === props.index ? 'bg-emerald-700' : 'bg-gray-300'
-      } text-pink font-large cursor-pointer font-bold`}
+      } font-large cursor-pointer font-bold md:text-lg`}
       onClick={() => props.handleComponentClick(props.index)}
       data-testid="testButton"
 
