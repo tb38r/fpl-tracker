@@ -25,7 +25,7 @@ export default function Results(props) {
           <div className="text-emerald-400 h-1/5 text-sm font-bold text-center items-center flex md:text-3xl">
             and a position
           </div>
-          <div className="text-sky-400 h-1/5 text-sm font-bold text-center items-center flex object-contain pt-10 md:text-2xl">
+          <div className="text-sky-400 h-1/5 text-sm font-bold text-center items-center flex object-contain pt-14 md:text-2xl">
             fpl tracker will show you the highest average points earners over that period
           </div>
           <div className="text-emerald-400 h-1/5 text-sm font-bold text-center items-center flex md:text-3xl">

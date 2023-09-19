@@ -15,7 +15,7 @@ export default function OuterShell(props) {
         }}
       />
 
-      <div className="h-1/10 w-full flex justify-center uppercase font-bold bg-yellow-400 text-xs md:text-lg">
+      <div className="h-1/10 w-full flex justify-center uppercase font-bold bg-yellow-400  text-[10px] md:text-lg">
         {props.name}
       </div>
 
