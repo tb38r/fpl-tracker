@@ -6,12 +6,12 @@ import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
 
 const ThemeButton = () => {
-  const [pageTheme, setPageTheme] = useState("light");
-
-  const bodyElement = document.querySelector("body");
-
-  useEffect(() => {
-    pageTheme === "light"
+    const [pageTheme, setPageTheme] = useState("light");
+    
+    
+    useEffect(() => {
+        const bodyElement = document.querySelector("body");
+        pageTheme === "light"
       ? (bodyElement.style.backgroundColor = "white")
       : (bodyElement.style.backgroundColor = "black");
 
