@@ -17,6 +17,7 @@ import {
 
 import cloneDeep from "lodash.clonedeep";
 import ThemeButton from "./ThemeButton";
+import { Footer } from "./Footer";
 
 export default function Home(props) {
   let sortedByPoints = SortedByPoints(props.apiData);
@@ -177,6 +178,7 @@ export default function Home(props) {
       </div>
 
       <Results data={dataForResults} />
+      <Footer/>
     </div>
   );
 }

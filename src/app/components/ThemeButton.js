@@ -4,19 +4,24 @@ import { useEffect, useState } from "react";
 
 import { SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 
-
 const ThemeButton = () => {
-    const [pageTheme, setPageTheme] = useState("light");
-    
-    
-    useEffect(() => {
-        const bodyElement = document.querySelector("body");
-        pageTheme === "light"
-      ? (bodyElement.style.backgroundColor = "white")
-      : (bodyElement.style.backgroundColor = "black");
+  const [pageTheme, setPageTheme] = useState("light");
+
+  useEffect(() => {
+    const bodyElement = document.querySelector("body");
+    const footerElement = document.querySelector(".footer-text");
+
+    if (pageTheme === "light") {
+      bodyElement.style.backgroundColor = "white";
+      footerElement.style.color = "black";
+    } else {
+      bodyElement.style.backgroundColor = "black";
+      footerElement.style.color = "white";
 
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pageTheme]);
+    }
+  }),
+    [pageTheme];
 
   return (
     <button
@@ -32,9 +37,7 @@ const ThemeButton = () => {
       ) : (
         <MoonIcon className="h-5 w-5 text-slate-800" />
       )}
-
     </button>
-
   );
 };
 
