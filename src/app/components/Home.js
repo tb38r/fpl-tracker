@@ -71,12 +71,11 @@ export default function Home(props) {
   );
   const sorted10WForwards = SortPlayersByPoints(tenWeekAverage, "forwards");
 
-  useEffect(()=>{
+  useEffect(() => {
     setDataForResults(sorted3WGoalkeepers.slice(0, 8));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
-
+  }, []);
 
   useEffect(() => {
     if (activeIndex === "1") {
@@ -134,72 +133,69 @@ export default function Home(props) {
       <Header />
 
       <div className="container-body h-full">
-      <div className=" h-1/4 md:h-1/6 pt-2 flex flex-col gap-1">
-<div className="time-element flex flex-row h-1/2 ">
-        <div className=" w-1/5 flex justify-center flex-col items-center text-cyan-500 text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
-  <span>Select a</span>time period
-</div>
-        <div className="w-4/5 grid gap-1 grid-cols-3 h-16 md:h-20">
-          <Time
-            time="3"
-            index="1"
-            activeIndex={activeIndex}
-            handleComponentClick={setActiveIndex}
-          />
-          <Time
-            time="5"
-            index="2"
-            activeIndex={activeIndex}
-            handleComponentClick={setActiveIndex}
-          />
-          <Time
-            time="10"
-            index="3"
-            activeIndex={activeIndex}
-            handleComponentClick={setActiveIndex}
-          />
-        </div>
+        <div className=" h-1/5 md:h-36 pt-2 flex flex-col gap-1">
+          <div className="time-element flex flex-row h-1/2 items-center">
+            <div className=" w-1/5 flex justify-center flex-col items-center text-cyan-500 text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
+              <span>Select a</span>time period
+            </div>
+            <div className="w-4/5 grid gap-1 grid-cols-3 h-16">
+              <Time
+                time="3"
+                index="1"
+                activeIndex={activeIndex}
+                handleComponentClick={setActiveIndex}
+              />
+              <Time
+                time="5"
+                index="2"
+                activeIndex={activeIndex}
+                handleComponentClick={setActiveIndex}
+              />
+              <Time
+                time="10"
+                index="3"
+                activeIndex={activeIndex}
+                handleComponentClick={setActiveIndex}
+              />
+            </div>
+          </div>
+
+          <div className="position-element  flex flex-row h-1/2 items-center mb-4 md:m-0">
+            <div className="w-1/5 flex justify-center flex-col items-center text-cyan-500 text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
+              <span>Select a position</span>
+            </div>
+            <div className="w-4/5 grid gap-1 grid-cols-4 grid-rows-1 h-16 ">
+              <Position
+                position="GOALKEEPER"
+                index="1"
+                activeIndex={activePositionIndex}
+                handleComponentClick={setActivePositionIndex}
+              />
+              <Position
+                position="DEFENDERS"
+                index="2"
+                activeIndex={activePositionIndex}
+                handleComponentClick={setActivePositionIndex}
+              />
+              <Position
+                position="MIDFIELDERS"
+                index="3"
+                activeIndex={activePositionIndex}
+                handleComponentClick={setActivePositionIndex}
+              />
+              <Position
+                position="FORWARDS"
+                index="4"
+                activeIndex={activePositionIndex}
+                handleComponentClick={setActivePositionIndex}
+              />
+            </div>
+          </div>
         </div>
 
-        <div className="position-element  flex flex-row h-1/2 mb-4 md:m-0">
-
-        <div className="w-1/5 flex justify-center flex-col items-center text-cyan-500 text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
-  <span>Select a position</span>
-</div>
-        <div className="w-4/5 grid gap-1 grid-cols-4 grid-rows-1 h-16 md:h-20">
-          
-          <Position
-            position="GOALKEEPER"
-            index="1"
-            activeIndex={activePositionIndex}
-            handleComponentClick={setActivePositionIndex}
-          />
-          <Position
-            position="DEFENDERS"
-            index="2"
-            activeIndex={activePositionIndex}
-            handleComponentClick={setActivePositionIndex}
-          />
-          <Position
-            position="MIDFIELDERS"
-            index="3"
-            activeIndex={activePositionIndex}
-            handleComponentClick={setActivePositionIndex}
-          />
-          <Position
-            position="FORWARDS"
-            index="4"
-            activeIndex={activePositionIndex}
-            handleComponentClick={setActivePositionIndex}
-          />
-        </div>
-        </div>
+        <Results data={dataForResults} />
       </div>
-
-      <Results data={dataForResults} />
-
-      </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

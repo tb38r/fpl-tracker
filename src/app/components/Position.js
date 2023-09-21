@@ -1,12 +1,7 @@
 export default function Position(props) {
   const { position, index } = props;
 
-  const smallScreenText = {
-    "Goalkeeper": "GK",
-    "Defender": "DF",
-    "Midfielder": "MF",
-    "Forward": "F",
-  };
+
 
   return (
     <div
