@@ -127,8 +127,8 @@ export default function Home(props) {
       <Header />
 
       <div className="container-body h-full">
-      <div className=" h-1/5 pt-2 flex flex-col gap-1 md:h-1/4">
-<div className="time flex flex-row">
+      <div className=" h-1/4 md:h-1/6 pt-2 flex flex-col gap-1">
+<div className="time flex flex-row h-1/2">
         <div className=" w-1/5 flex justify-center flex-col items-center text-cyan-500 text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
   <span>Select a</span>time period
 </div>
@@ -154,7 +154,7 @@ export default function Home(props) {
         </div>
         </div>
 
-        <div className="position  flex flex-row">
+        <div className="position  flex flex-row h-1/2">
 
         <div className="w-1/5 flex justify-center flex-col items-center text-cyan-500 text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
   <span>Select a position</span>
@@ -190,6 +190,7 @@ export default function Home(props) {
       </div>
 
       <Results data={dataForResults} />
+
       </div>
       <Footer/>
     </div>
