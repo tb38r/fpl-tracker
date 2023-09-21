@@ -424,3 +424,16 @@ function ReturnAverage(arr, divisor) {
 
   return copiedArr;
 }
+
+
+export function ValueForMoney(arr){
+
+
+ 
+   arr.sort(
+    (a,b)=> b.value_season - a.value_season
+  )
+ 
+  return arr
+
+}
