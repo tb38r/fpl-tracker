@@ -124,11 +124,16 @@ export default function Home(props) {
   }, [activeIndex, activePositionIndex]);
 
   return (
-    <div className="container h-full mx-auto flex flex-col justify-center max-w-5xl px-[5%]">
+    <div className="container h-full mx-auto flex flex-col max-w-5xl">
       <Header />
-      <ThemeButton/>
-      <div className=" h-1/5 pt-6 flex flex-col justify-evenly gap-3 md:h-1/4">
-        <div className="grid gap-3 grid-cols-3 h-16 md:h-20">
+
+      <div className="container-body h-full">
+      <div className=" h-1/5 pt-6 flex flex-col gap-2 md:h-1/4">
+
+        <div className="grid gap-3 grid-cols-4 h-16 md:h-20">
+        <div className="flex justify-center flex-col items-center text-cyan-500 text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
+  <span>Select a</span>time period
+</div>
           <Time
             time="3"
             index="1"
@@ -179,6 +184,7 @@ export default function Home(props) {
 
       <Results data={dataForResults} />
       <Footer/>
+      </div>
     </div>
   );
 }

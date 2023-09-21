@@ -33,9 +33,9 @@ const ThemeButton = () => {
       }
     >
       {pageTheme === "dark" ? (
-        <SunIcon className="h-5 w-5 text-orange-300" />
+        <SunIcon className="h-5 w-5 text-white-300" />
       ) : (
-        <MoonIcon className="h-5 w-5 text-slate-800" />
+        <MoonIcon className="h-5 w-5 text-gray-300" />
       )}
     </button>
   );
