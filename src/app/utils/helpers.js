@@ -426,7 +426,7 @@ function ReturnAverage(arr, divisor) {
 }
 
 
-export function ValueForMoney(arr){
+export function SortValueForMoney(arr){
 
 
  
