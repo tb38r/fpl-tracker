@@ -71,6 +71,13 @@ export default function Home(props) {
   );
   const sorted10WForwards = SortPlayersByPoints(tenWeekAverage, "forwards");
 
+  useEffect(()=>{
+    setDataForResults(sorted3WGoalkeepers.slice(0, 8));
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+
+
   useEffect(() => {
     if (activeIndex === "1") {
       if (activePositionIndex === "1") {
