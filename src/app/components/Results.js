@@ -9,7 +9,7 @@ export default function Results(props) {
         {!!props.data.length ? 
     <div className="text-xs mt-2 results-title text-cyan-300 font-bold flex justify-center bg-slate-500 md:text-base md:font-extrabold">Highest Average Points Earners Over The Period</div>:null}
 
-    <div className="h-2/5 grid gap-2 grid-cols-4 pt-10 ">
+    <div className="h-1/3 grid gap-2 grid-cols-4 pt-10 ">
       {!!props.data.length ? (
         props.data
           .slice(0, 3)
