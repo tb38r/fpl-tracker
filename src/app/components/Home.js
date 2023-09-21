@@ -139,10 +139,10 @@ export default function Home(props) {
       <Header />
 
       <div className="container-body h-full">
-      <div className="text-xs mt-2 results-title text-cyan-100 font-bold flex justify-center bg-black md:text-base md:font-extrabold">Highest Average Points Earners Over The Period</div>
+      <div className=" dark-backgrd text-xs mt-2 results-title text-white font-bold flex justify-center bg-black md:text-base md:font-extrabold">Highest Average Points Earners Over The Period</div>
         <div className=" h-1/5 md:h-36 pt-2 flex flex-col gap-1">
           <div className="time-element flex flex-row h-1/2 items-center">
-            <div className=" w-1/5 flex justify-center flex-col items-center text-cyan-500 text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
+            <div className=" dark-txt w-1/5 flex justify-center flex-col items-center text-black text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
               <span>Select a</span>time period
             </div>
             <div className="w-4/5 grid gap-1 grid-cols-3 h-16">
@@ -168,7 +168,7 @@ export default function Home(props) {
           </div>
 
           <div className="position-element  flex flex-row h-1/2 items-center mb-4 md:m-0">
-            <div className="w-1/5 flex justify-center flex-col items-center text-cyan-500 text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
+            <div className="dark-txt w-1/5 flex justify-center flex-col items-center text-black text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
               <span>Select a position</span>
             </div>
             <div className="w-4/5 grid gap-1 grid-cols-4 grid-rows-1 h-16 ">
