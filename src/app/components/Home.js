@@ -16,7 +16,6 @@ import {
 } from "../utils/helpers";
 
 import cloneDeep from "lodash.clonedeep";
-import ThemeButton from "./ThemeButton";
 import { Footer } from "./Footer";
 
 export default function Home(props) {
@@ -124,16 +123,16 @@ export default function Home(props) {
   }, [activeIndex, activePositionIndex]);
 
   return (
-    <div className="container h-full mx-auto flex flex-col max-w-5xl">
+    <div className="container h-full mx-auto flex flex-col max-w-7xl">
       <Header />
 
       <div className="container-body h-full">
-      <div className=" h-1/5 pt-6 flex flex-col gap-2 md:h-1/4">
-
-        <div className="grid gap-3 grid-cols-4 h-16 md:h-20">
-        <div className="flex justify-center flex-col items-center text-cyan-500 text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
+      <div className=" h-1/5 pt-2 flex flex-col gap-1 md:h-1/4">
+<div className="time flex flex-row">
+        <div className=" w-1/5 flex justify-center flex-col items-center text-cyan-500 text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
   <span>Select a</span>time period
 </div>
+        <div className="w-4/5 grid gap-1 grid-cols-3 h-16 md:h-20">
           <Time
             time="3"
             index="1"
@@ -153,8 +152,15 @@ export default function Home(props) {
             handleComponentClick={setActiveIndex}
           />
         </div>
+        </div>
 
-        <div className="grid gap-3 grid-cols-4 grid-rows-1 h-16 md:h-20">
+        <div className="position  flex flex-row">
+
+        <div className="w-1/5 flex justify-center flex-col items-center text-cyan-500 text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
+  <span>Select a position</span>
+</div>
+        <div className="w-4/5 grid gap-1 grid-cols-4 grid-rows-1 h-16 md:h-20">
+          
           <Position
             position="GOALKEEPER"
             index="1"
@@ -180,11 +186,12 @@ export default function Home(props) {
             handleComponentClick={setActivePositionIndex}
           />
         </div>
+        </div>
       </div>
 
       <Results data={dataForResults} />
-      <Footer/>
       </div>
+      <Footer/>
     </div>
   );
 }
