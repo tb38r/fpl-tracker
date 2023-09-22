@@ -3,7 +3,6 @@ import { kitImage } from "../utils/shared-variables";
 import { teamCodeToString } from "../utils/shared-variables";
 
 export default function Honourables(props) {
-  console.log('ps', props);
 
   return (
     <div className="flex flex-col justify-between items-center h-8 rounded-full bg-blue-300 px-4 md:h-[40px] md:flex-row">
