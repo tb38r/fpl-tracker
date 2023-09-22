@@ -3,7 +3,6 @@ import { ValueExtras } from "./ValueExtras";
 import { teamCodeToString } from "../utils/shared-variables";
 
 export default function ValueShell(props) {
-console.log('props', props);
 
   return (
     <div className="flex flex-col p-2 h-full w-full justify-center items-center gap-2 ">

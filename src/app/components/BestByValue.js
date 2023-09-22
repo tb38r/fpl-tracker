@@ -1,9 +1,7 @@
-import OuterShell from "./OuterShell";
 import Honourables from "./Honourables";
 import ValueShell from "./ValueShell";
 
 export default function BestByValue(props) {
-  console.log("BVV", props);
 
   return (
     <>
@@ -38,6 +36,9 @@ export default function BestByValue(props) {
                   key={ele.id}
                   name={ele.web_name}
                   score={ele.value_season}
+                  hasValue = {true}
+                  teamName = {ele.team_code}
+
                 />
               ))
             : null}
