@@ -140,12 +140,12 @@ export default function Home(props) {
   }, [activeIndex, activePositionIndex]);
 
   return (
-    <div className="container h-full mx-auto flex flex-col max-w-7xl">
+    <div className="container h-fit mx-auto flex flex-col max-w-7xl">
       <Header />
 
       <div className="container-body h-full">
         <div className=" dark-backgrd text-xs mt-2 results-title text-white font-bold flex justify-center bg-black md:text-base md:font-extrabold">
-          Highest Average Points Earners Over the Selected Period
+          Highest Average Points Earned Over the Selected Period
         </div>
         <div className=" h-1/5 md:h-36 pt-2 flex flex-col gap-1">
           <div className="time-element flex flex-row h-1/2 items-center">
