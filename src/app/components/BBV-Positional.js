@@ -1,13 +1,15 @@
 import Honourables from "./Honourables";
 import ValueShell from "./ValueShell";
 
-export default function BestByValue(props) {
+export default function BBVPositional(props) {
+
+  console.log('props from bbv', props);
 
   return (
     <>
-      {!!props.data.length ? (
+      {/* {!!props.data.length ? (
         <div className="dark-backgrd text-xs mt-2 results-title text-white font-bold flex justify-center bg-black md:text-base md:font-extrabold md:mt-10">
-          Pound For Pound List (overall best performers by value)
+          Pound For Pound List (per position)
         </div>
       ) : null}
 
@@ -43,7 +45,7 @@ export default function BestByValue(props) {
               ))
             : null}
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

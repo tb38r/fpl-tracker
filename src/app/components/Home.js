@@ -14,20 +14,24 @@ import {
   GetFiveWeekAverage,
   SortPlayersByPoints,
   GetTenWeekAverage,
+  SortValueForMoney,
+  getFirstXInstancesOfEachType,
 } from "../utils/helpers";
+import BBVPositional from "./BBV-Positional";
 
 import cloneDeep from "lodash.clonedeep";
 import { Footer } from "./Footer";
-import { SortValueForMoney } from "../utils/helpers";
 
 export default function Home(props) {
- 
-  let DataFarValueForMoney = cloneDeep(props.staticData.elements)
-  
-   SortValueForMoney(DataFarValueForMoney);
+  let DataForValueForMoney = cloneDeep(props.staticData.elements);
+
+  SortValueForMoney(DataForValueForMoney);
 
   let sortedByPoints = SortedByPoints(props.apiData);
-  let sortedWithValues = SortedWithValues(sortedByPoints, cloneDeep(props.staticData));
+  let sortedWithValues = SortedWithValues(
+    sortedByPoints,
+    cloneDeep(props.staticData)
+  );
   let sortedByPosition = SortedByPosition(sortedWithValues);
 
   let sortedByPositionCopy = cloneDeep(sortedByPosition);
@@ -140,7 +144,9 @@ export default function Home(props) {
       <Header />
 
       <div className="container-body h-full">
-      <div className=" dark-backgrd text-xs mt-2 results-title text-white font-bold flex justify-center bg-black md:text-base md:font-extrabold">Highest Average Points Earners Over the Selected Period</div>
+        <div className=" dark-backgrd text-xs mt-2 results-title text-white font-bold flex justify-center bg-black md:text-base md:font-extrabold">
+          Highest Average Points Earners Over the Selected Period
+        </div>
         <div className=" h-1/5 md:h-36 pt-2 flex flex-col gap-1">
           <div className="time-element flex flex-row h-1/2 items-center">
             <div className=" dark-txt w-1/5 flex justify-center flex-col items-center text-black text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
@@ -202,9 +208,12 @@ export default function Home(props) {
         </div>
 
         <Results data={dataForResults} />
-        <BestByValue data={DataFarValueForMoney}/>
+        <BestByValue data={DataForValueForMoney} />
+        <BBVPositional
+          data={getFirstXInstancesOfEachType(DataForValueForMoney, 5)}
+        />
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

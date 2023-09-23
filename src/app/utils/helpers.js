@@ -437,3 +437,41 @@ export function SortValueForMoney(arr){
   return arr
 
 }
+
+
+
+
+export function getFirstXInstancesOfEachType(arr, desiredLength) {
+  const result = {};
+
+  const typeToString ={
+    1: 'goalkeepers',
+    2 : 'defenders',
+    3: 'midfielders',
+    4: 'forwards'
+  }
+
+  for (const obj of arr) {
+    const type = typeToString[obj.element_type];
+
+    if (!result[type]) {
+      result[type] = [];
+      
+    }
+
+    if(result[type].length < desiredLength ){
+         result[type].push(obj)
+    }
+
+ 
+
+      if (
+        Object.keys(result).every((arr) => arr.length === desiredLength)
+      ) {
+        break;
+      }
+    
+  }
+
+  return result;
+}
