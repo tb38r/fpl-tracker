@@ -33,7 +33,7 @@ export default function BBVPositional(props) {
             />
           ) : null}
 
-          <div className="bbvpositionHonourables flex flex-col md:gap-4">
+          <div className="bbvpositionHonourables flex flex-col md:gap-4 gap-1">
             {!!props.data.goalkeepers.length
               ? props.data.goalkeepers
                   .slice(1, 5)
@@ -75,7 +75,7 @@ export default function BBVPositional(props) {
             />
           ) : null}
 
-          <div className="bbvpositionHonourables flex flex-col md:gap-4">
+          <div className="bbvpositionHonourables flex flex-col md:gap-4 gap-1">
             {!!props.data.defenders.length
               ? props.data.defenders
                   .slice(1, 5)
@@ -115,7 +115,7 @@ export default function BBVPositional(props) {
             />
           ) : null}
 
-          <div className="bbvpositionHonourables flex flex-col md:gap-4">
+          <div className="bbvpositionHonourables flex flex-col md:gap-4 gap-1 ">
             {!!props.data.midfielders.length
               ? props.data.midfielders
                   .slice(1, 5)
@@ -155,7 +155,7 @@ export default function BBVPositional(props) {
             />
           ) : null}
 
-          <div className="bbvpositionHonourables flex flex-col md:gap-4">
+          <div className="bbvpositionHonourables flex flex-col md:gap-4 gap-1">
             {!!props.data.forwards.length
               ? props.data.forwards
                   .slice(1, 5)

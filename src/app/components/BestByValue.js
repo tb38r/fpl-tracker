@@ -29,7 +29,7 @@ export default function BestByValue(props) {
             ))
           : null}
 
-        <div className="flex flex-col justify-evenly">
+         <div className="flex flex-col justify-evenly gap-1 md:gap-0">
           {props.data
             ? props.data.slice(3, 8).map((ele) => (
                 <Honourables
