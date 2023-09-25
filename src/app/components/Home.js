@@ -155,7 +155,7 @@ export default function Home(props) {
             <div className=" dark-txt w-1/5 flex justify-center flex-col items-center text-black text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
               <span>Select a</span>time period
             </div>
-            <div className="w-4/5 grid gap-1 grid-cols-3 h-16">
+            <div className="w-4/5 grid gap-1 grid-cols-3 h-12 md:h-16">
               <Time
                 time="3"
                 index="1"
@@ -181,7 +181,7 @@ export default function Home(props) {
             <div className="dark-txt w-1/5 flex justify-center flex-col items-center text-black text-[8px] md:text-lg 'bg-gray-300' font-large font-bold">
               <span>Select a position</span>
             </div>
-            <div className="w-4/5 grid gap-1 grid-cols-4 grid-rows-1 h-16 ">
+            <div className="w-4/5 grid gap-1 grid-cols-4 grid-rows-1 h-12 md:h-16 ">
               <Position
                 position="GOALKEEPER"
                 index="1"
