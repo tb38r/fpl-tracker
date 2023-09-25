@@ -41,5 +41,5 @@ export const teamCodeToString = {
   11: "Everton",
   54: "Fulham",
   1: "Man Utd",
-  14: "Newcastle",
+  4: "Newcastle",
 };

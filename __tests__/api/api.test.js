@@ -27,7 +27,7 @@ describe('FetchGameWeekData', () => {
     expect(result).toEqual(mockData);
     expect(fetch).toHaveBeenCalledWith(
       `https://fantasy.premierleague.com/api/event/${gameweek}/live/`,
-      { next: { revalidate: 7200 } }
+      
     );
   });
 
@@ -47,7 +47,7 @@ describe('FetchGameWeekData', () => {
     
     expect(fetch).toHaveBeenCalledWith(
       `https://fantasy.premierleague.com/api/event/${gameweek}/live/`,
-      { next: { revalidate: 7200 } }
+      
     );
   });
 });

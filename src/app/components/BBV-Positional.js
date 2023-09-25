@@ -2,7 +2,6 @@ import Honourables from "./Honourables";
 import ValueShell from "./ValueShell";
 
 export default function BBVPositional(props) {
-  console.log("props from bbv", props);
 
   return (
     <>

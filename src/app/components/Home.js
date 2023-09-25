@@ -23,6 +23,9 @@ import cloneDeep from "lodash.clonedeep";
 import { Footer } from "./Footer";
 
 export default function Home(props) {
+
+
+
   let DataForValueForMoney = cloneDeep(props.staticData.elements);
 
   SortValueForMoney(DataForValueForMoney);

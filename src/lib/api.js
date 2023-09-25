@@ -1,7 +1,7 @@
 export async function FetchGameWeekData(gameweek) {
   const response = await fetch(
     `https://fantasy.premierleague.com/api/event/${gameweek}/live/`,
-    { next: { revalidate: 7200 } } );
+    );
 
   if (!response.ok) {
     throw new Error("Failed to fetch data");
@@ -14,7 +14,7 @@ export async function FetchGameWeekData(gameweek) {
 export async function BootstrapStaticData() {
   const response = await fetch(
     `https://fantasy.premierleague.com/api/bootstrap-static/`,
-    { next: { revalidate: 7200 } }
+   
   );
 
   if (!response.ok) {
