@@ -24,7 +24,7 @@ import { Footer } from "./Footer";
 
 export default function Home(props) {
 
-
+ console.log('playerData', cloneDeep(props.playerData))
 
   let DataForValueForMoney = cloneDeep(props.staticData.elements);
 

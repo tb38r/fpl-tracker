@@ -1,4 +1,5 @@
 import { kitImage } from "../utils/shared-variables";
+import NamedTile from "./NamedTile";
 
 export default function OuterShell(props) {
 
@@ -14,10 +15,12 @@ export default function OuterShell(props) {
           backgroundRepeat: "no-repeat",
         }}
       />
-
-      <div className="h-1/10 w-full flex justify-center uppercase font-bold bg-yellow-400  text-[10px] md:text-lg">
+       <NamedTile name= {props.name} id ={props.playerid}/>
+       
+       
+      {/* <div className="h-1/10 w-full flex justify-center uppercase font-bold bg-yellow-400  text-[10px] md:text-lg">
         {props.name}
-      </div>
+      </div> */}
 
       <div className=" bg-pink-500 w-10 h-10 md:h-20 md:w-20 rounded-full flex justify-center items-center font-bold">
         {props.score}

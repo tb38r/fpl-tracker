@@ -1,5 +1,24 @@
 import cloneDeep from "lodash.clonedeep";
 
+
+export async function GetAllPlayerData(fn){
+
+   let result ={}
+   for (let i = 1; i < 720; i++) {
+    let data = await fn(i);
+    if (data.status === 'ok'){
+
+      result[i] = data.data;
+    }
+   // if (data.elements.length === 0) break;
+  }
+
+  return result;
+
+  
+}
+
+
 export async function GetAllGameweeksData(fn) {
   let result = [];
 

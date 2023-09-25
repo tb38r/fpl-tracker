@@ -18,6 +18,7 @@ export default function Results(props) {
               name={ele.name}
               teamname={ele.team}
               score={ele.points}
+              playerid= {ele.id}
             />
           ))
       ) : null}

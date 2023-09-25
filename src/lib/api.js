@@ -24,3 +24,25 @@ export async function BootstrapStaticData() {
 
   return data;
 }
+
+
+export async function FetchPlayerData(playerID) {
+
+  const respObj = {}
+  const response = await fetch(
+    `https://fantasy.premierleague.com/api/element-summary/${playerID}/`
+    );
+
+  if (!response.ok) {
+    respObj.status = 'failed'
+
+   return respObj
+  }
+  const data = await response.json();
+  respObj.status = 'ok'
+  respObj.data = data
+
+  return respObj;
+}
+
+
