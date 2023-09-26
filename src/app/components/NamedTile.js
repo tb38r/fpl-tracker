@@ -3,6 +3,7 @@ import { Drawer } from "@mui/material";
 import DrawerContent from "./Drawer/DrawerContent";
 
 const NamedTile = (props) => {
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [playerID, setPlayerID] = useState(props.id);
 

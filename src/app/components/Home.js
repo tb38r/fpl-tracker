@@ -26,9 +26,12 @@ export default function Home(props) {
   const [playerContext, setPlayerContext] = useState("");
 
   useEffect(() => {
+    let contextObj = {}
     let playerData = cloneDeep(props.playerData);
-    setPlayerContext(playerData);
-
+    let teamData = cloneDeep(props.staticData.teams)
+    contextObj.playerData = playerData
+    contextObj.teamData = teamData
+    setPlayerContext(contextObj);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

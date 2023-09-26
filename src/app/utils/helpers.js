@@ -1,23 +1,17 @@
 import cloneDeep from "lodash.clonedeep";
 
-
-export async function GetAllPlayerData(fn){
-
-   let result ={}
-   for (let i = 1; i < 720; i++) {
+export async function GetAllPlayerData(fn) {
+  let result = {};
+  for (let i = 1; i < 720; i++) {
     let data = await fn(i);
-    if (data.status === 'ok'){
-
+    if (data.status === "ok") {
       result[i] = data.data;
     }
-   // if (data.elements.length === 0) break;
+    // if (data.elements.length === 0) break;
   }
 
   return result;
-
-  
 }
-
 
 export async function GetAllGameweeksData(fn) {
   let result = [];
@@ -53,9 +47,9 @@ export function GetLastXElements(arr, num) {
 //  SortedWithValues(sortedByPoints, props.static));
 
 export function SortedWithValues(arr, props) {
-    if(arr.length === 0){
-      return []
-    }
+  if (arr.length === 0) {
+    return [];
+  }
 
   let res = [];
   for (const item of arr) {
@@ -63,7 +57,6 @@ export function SortedWithValues(arr, props) {
     for (const gwItem of item) {
       for (const staticItem of props.elements) {
         if (gwItem.id === staticItem.id) {
-      
           let data = {};
           data.id = staticItem.id;
           data.points = gwItem.stats.total_points;
@@ -444,52 +437,77 @@ function ReturnAverage(arr, divisor) {
   return copiedArr;
 }
 
+export function SortValueForMoney(arr) {
+  arr.sort((a, b) => b.value_season - a.value_season);
 
-export function SortValueForMoney(arr){
-
-
- 
-   arr.sort(
-    (a,b)=> b.value_season - a.value_season
-  )
- 
-  return arr
-
+  return arr;
 }
-
-
-
 
 export function getFirstXInstancesOfEachType(arr, desiredLength) {
   const result = {};
 
-  const typeToString ={
-    1: 'goalkeepers',
-    2 : 'defenders',
-    3: 'midfielders',
-    4: 'forwards'
-  }
+  const typeToString = {
+    1: "goalkeepers",
+    2: "defenders",
+    3: "midfielders",
+    4: "forwards",
+  };
 
   for (const obj of arr) {
     const type = typeToString[obj.element_type];
 
     if (!result[type]) {
       result[type] = [];
-      
     }
 
-    if(result[type].length < desiredLength ){
-         result[type].push(obj)
+    if (result[type].length < desiredLength) {
+      result[type].push(obj);
     }
 
- 
+    if (Object.keys(result).every((arr) => arr.length === desiredLength)) {
+      break;
+    }
+  }
 
-      if (
-        Object.keys(result).every((arr) => arr.length === desiredLength)
-      ) {
-        break;
+  return result;
+}
+
+export function ParseDrawerContent(playerobj, teamobj) {
+  if (playerobj.history.length < 3) {
+    console.log("Insufficient data to create card");
+    return;
+  }
+
+  let result = [];
+  const data = GetLastXElements(playerobj.history, 3);
+
+  for (let i = 2; i >= 0; i--) {
+    let gwObj = {};
+    gwObj.isHome = data[i].was_home;
+    gwObj.opponent = teamobj[data[i].opponent_team - 1].name;
+    gwObj.awayScore = data[i].team_a_score;
+    gwObj.homeScore = data[i].team_h_score;
+    gwObj.totalPoints = data[i].total_points;
+
+    let netScore = data[i].team_h_score - data[i].team_a_score;
+
+    if (netScore > 0) {
+      if (data[i].was_home) {
+        gwObj.didWinColor = 'text-xs md:text-x text-green-700 font-bold';
+      } else {
+        gwObj.didWinColor = 'text-xs md:text-x text-red-700 font-bold';
       }
-    
+    } else if (netScore < 0) {
+      if (data[i].was_home) {
+        gwObj.didWinColor = 'text-xs md:text-x text-red-700 font-bold';
+      } else {
+        gwObj.didWinColor = 'text-xs md:text-x text-green-700 font-bold';
+      }
+    } else {
+      gwObj.didWinColor = 'text-xs md:text-x text-blue-500 font-bold';;
+    }
+
+    result.push(gwObj);
   }
 
   return result;

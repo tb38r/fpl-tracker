@@ -4,6 +4,7 @@ import Honourables from "./Honourables";
 //shhould receive an obj with 8 arrays with the comp
 export default function Results(props) {
 
+
   return (
     <>
      
