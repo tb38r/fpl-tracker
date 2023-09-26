@@ -25,6 +25,7 @@ export default function BestByValue(props) {
                 cost={ele.now_cost / 10}
                 ownership={ele.selected_by_percent}
                 teamName = {ele.team_code}
+                playerid= {ele.id}
               />
             ))
           : null}

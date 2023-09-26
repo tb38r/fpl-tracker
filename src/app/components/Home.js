@@ -5,7 +5,7 @@ import Position from "./Position";
 import Header from "./Header";
 import Results from "./Results";
 import BestByValue from "./BestByValue";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import {
   SortedByPoints,
   SortedByPosition,
@@ -18,13 +18,20 @@ import {
   getFirstXInstancesOfEachType,
 } from "../utils/helpers";
 import BBVPositional from "./BBV-Positional";
-
 import cloneDeep from "lodash.clonedeep";
 import { Footer } from "./Footer";
+import { PlayerDataContext } from "../context/playerDataContext";
 
 export default function Home(props) {
+  const [playerContext, setPlayerContext] = useState("");
 
- console.log('playerData', cloneDeep(props.playerData))
+  useEffect(() => {
+    let playerData = cloneDeep(props.playerData);
+    setPlayerContext(playerData);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   let DataForValueForMoney = cloneDeep(props.staticData.elements);
 
@@ -209,12 +216,13 @@ export default function Home(props) {
             </div>
           </div>
         </div>
-
-        <Results data={dataForResults} />
-        <BestByValue data={DataForValueForMoney} />
-        <BBVPositional
-          data={getFirstXInstancesOfEachType(DataForValueForMoney, 5)}
-        />
+        <PlayerDataContext.Provider value={{ playerContext }}>
+          <Results data={dataForResults} />
+          <BestByValue data={DataForValueForMoney} />
+          <BBVPositional
+            data={getFirstXInstancesOfEachType(DataForValueForMoney, 5)}
+          />
+        </PlayerDataContext.Provider>
         <Footer />
       </div>
     </div>

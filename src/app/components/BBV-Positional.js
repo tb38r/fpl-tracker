@@ -28,7 +28,7 @@ export default function BBVPositional(props) {
               cost={props.data.goalkeepers[0].now_cost / 10}
               ownership={props.data.goalkeepers[0].selected_by_percent}
               teamName={props.data.goalkeepers[0].team_code}
-              id={props.data.goalkeepers[0].id}
+              playerid={props.data.goalkeepers[0].id}
             />
           ) : null}
 
@@ -68,7 +68,7 @@ export default function BBVPositional(props) {
               cost={props.data.defenders[0].now_cost / 10}
               ownership={props.data.defenders[0].selected_by_percent}
               teamName={props.data.defenders[0].team_code}
-              id={props.data.defenders[0].id}
+              playerid={props.data.defenders[0].id}
             />
           ) : null}
 
@@ -106,7 +106,7 @@ export default function BBVPositional(props) {
               cost={props.data.midfielders[0].now_cost / 10}
               ownership={props.data.midfielders[0].selected_by_percent}
               teamName={props.data.midfielders[0].team_code}
-              id={props.data.midfielders[0].id}
+              playerid={props.data.midfielders[0].id}
             />
           ) : null}
 
@@ -144,7 +144,7 @@ export default function BBVPositional(props) {
               cost={props.data.forwards[0].now_cost / 10}
               ownership={props.data.forwards[0].selected_by_percent}
               teamName={props.data.forwards[0].team_code}
-              id={props.data.forwards[0].id}
+              playerid={props.data.forwards[0].id}
             />
           ) : null}
 

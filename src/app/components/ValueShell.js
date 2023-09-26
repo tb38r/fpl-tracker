@@ -5,6 +5,7 @@ import NamedTile from "./NamedTile";
 
 export default function ValueShell(props) {
 
+
   return (
     <div className="flex flex-col p-2 h-full w-full justify-center items-center gap-2 ">
       <div
@@ -17,7 +18,7 @@ export default function ValueShell(props) {
         }}
       />
 
-<NamedTile name= {props.name}/>
+<NamedTile name= {props.name} id={props.playerid}/>
 
   
       <div className="value-base h-10 md:h-24 w-full flex">

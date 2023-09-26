@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Drawer } from "@mui/material";
-import TiledBox from "./TiledBox";
+import DrawerContent from "./Drawer/DrawerContent";
 
 const NamedTile = (props) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const[playerID, setPlayerID] = useState(props.id)
-
+  const [playerID, setPlayerID] = useState(props.id);
 
   return (
     <>
@@ -20,13 +19,8 @@ const NamedTile = (props) => {
         anchor="bottom"
         open={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
-        
       >
-        <TiledBox playerID ={playerID}/>
- 
- 
-
-     
+        <DrawerContent playerID={playerID} />
       </Drawer>
     </>
   );
