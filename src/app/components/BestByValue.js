@@ -26,6 +26,8 @@ export default function BestByValue(props) {
                 ownership={ele.selected_by_percent}
                 teamName = {ele.team_code}
                 playerid= {ele.id}
+                firstName = {ele.first_name}
+                secondName = {ele.second_name}
               />
             ))
           : null}
@@ -39,6 +41,8 @@ export default function BestByValue(props) {
                   score={ele.value_season}
                   hasValue = {true}
                   teamName = {ele.team_code}
+                  firstName = {ele.first_name}
+                  secondName = {ele.second_name}
 
                 />
               ))

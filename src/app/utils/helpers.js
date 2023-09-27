@@ -62,6 +62,8 @@ export function SortedWithValues(arr, props) {
           data.points = gwItem.stats.total_points;
           data.position = staticItem.element_type;
           data.name = staticItem.web_name;
+          data.firstName = staticItem.first_name;
+          data.secondName = staticItem.second_name;
           data.team = props.teams.filter((val) => {
             if (staticItem.team_code === val.code) {
               return val;

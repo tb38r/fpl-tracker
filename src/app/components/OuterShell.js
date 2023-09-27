@@ -2,9 +2,6 @@ import { kitImage } from "../utils/shared-variables";
 import NamedTile from "./NamedTile";
 
 export default function OuterShell(props) {
-
-
-
   return (
     <div className="flex flex-col p-2 h-full justify-center items-center gap-2 ">
       <div
@@ -16,9 +13,13 @@ export default function OuterShell(props) {
           backgroundRepeat: "no-repeat",
         }}
       />
-       <NamedTile name= {props.name} id ={props.playerid}/>
-       
-       
+      <NamedTile
+        name={props.name}
+        id={props.playerid}
+        firstName={props.firstName}
+        secondName={props.secondName}
+      />
+
       {/* <div className="h-1/10 w-full flex justify-center uppercase font-bold bg-yellow-400  text-[10px] md:text-lg">
         {props.name}
       </div> */}

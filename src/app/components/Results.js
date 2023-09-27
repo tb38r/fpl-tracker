@@ -4,6 +4,7 @@ import Honourables from "./Honourables";
 //shhould receive an obj with 8 arrays with the comp
 export default function Results(props) {
 
+console.log('results', props);
 
   return (
     <>
@@ -20,6 +21,8 @@ export default function Results(props) {
               teamname={ele.team}
               score={ele.points}
               playerid= {ele.id}
+              firstName = {ele.firstName}
+              secondName = {ele.secondName}
             />
           ))
       ) : null}
@@ -34,6 +37,8 @@ export default function Results(props) {
                   name={ele.name}
                   score={ele.points}
                   teamname={ele.team}
+                  firstName = {ele.firstName}
+                  secondName = {ele.secondName}
                 />
               ))
           : null}

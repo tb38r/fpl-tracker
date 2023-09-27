@@ -3,7 +3,6 @@ import { Drawer } from "@mui/material";
 import DrawerContent from "./Drawer/DrawerContent";
 
 const NamedTile = (props) => {
-
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [playerID, setPlayerID] = useState(props.id);
 
@@ -21,7 +20,11 @@ const NamedTile = (props) => {
         open={isDrawerOpen}
         onClose={() => setIsDrawerOpen(false)}
       >
-        <DrawerContent playerID={playerID} />
+        <DrawerContent
+          playerID={playerID}
+          firstName={props.firstName}
+          secondName={props.secondName}
+        />
       </Drawer>
     </>
   );

@@ -2,6 +2,7 @@ import Honourables from "./Honourables";
 import ValueShell from "./ValueShell";
 
 export default function BBVPositional(props) {
+  console.log('BBVP', props);
 
   return (
     <>
@@ -29,6 +30,9 @@ export default function BBVPositional(props) {
               ownership={props.data.goalkeepers[0].selected_by_percent}
               teamName={props.data.goalkeepers[0].team_code}
               playerid={props.data.goalkeepers[0].id}
+              firstName ={props.data.goalkeepers[0].first_name}
+              secondName ={props.data.goalkeepers[0].second_name}
+
             />
           ) : null}
 
@@ -43,6 +47,8 @@ export default function BBVPositional(props) {
                       score={ele.value_season}
                       hasValue={true}
                       teamName={ele.team_code}
+                      firstName ={ele.first_name}
+                      secondName ={ele.second_name}
                     />
                   ))
               : null}
@@ -69,6 +75,8 @@ export default function BBVPositional(props) {
               ownership={props.data.defenders[0].selected_by_percent}
               teamName={props.data.defenders[0].team_code}
               playerid={props.data.defenders[0].id}
+              firstName ={props.data.defenders[0].first_name}
+              secondName ={props.data.defenders[0].second_name}
             />
           ) : null}
 
@@ -83,6 +91,8 @@ export default function BBVPositional(props) {
                       score={ele.value_season}
                       hasValue={true}
                       teamName={ele.team_code}
+                      firstName ={ele.first_name}
+                      secondName ={ele.second_name}
                     />
                   ))
               : null}
@@ -107,6 +117,8 @@ export default function BBVPositional(props) {
               ownership={props.data.midfielders[0].selected_by_percent}
               teamName={props.data.midfielders[0].team_code}
               playerid={props.data.midfielders[0].id}
+              firstName ={props.data.midfielders[0].first_name}
+              secondName ={props.data.midfielders[0].second_name}
             />
           ) : null}
 
@@ -121,6 +133,8 @@ export default function BBVPositional(props) {
                       score={ele.value_season}
                       hasValue={true}
                       teamName={ele.team_code}
+                      firstName ={ele.first_name}
+                      secondName ={ele.second_name}
                     />
                   ))
               : null}
@@ -145,6 +159,8 @@ export default function BBVPositional(props) {
               ownership={props.data.forwards[0].selected_by_percent}
               teamName={props.data.forwards[0].team_code}
               playerid={props.data.forwards[0].id}
+              firstName ={props.data.forwards[0].first_name}
+              secondName ={props.data.forwards[0].second_name}
             />
           ) : null}
 
@@ -159,6 +175,8 @@ export default function BBVPositional(props) {
                       score={ele.value_season}
                       hasValue={true}
                       teamName={ele.team_code}
+                      firstName ={ele.first_name}
+                      secondName ={ele.second_name}
                     />
                   ))
               : null}
