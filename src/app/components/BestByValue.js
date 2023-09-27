@@ -43,6 +43,7 @@ export default function BestByValue(props) {
                   teamName = {ele.team_code}
                   firstName = {ele.first_name}
                   secondName = {ele.second_name}
+                  playerid= {ele.id}
 
                 />
               ))

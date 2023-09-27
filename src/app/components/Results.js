@@ -36,6 +36,7 @@ export default function Results(props) {
                   name={ele.name}
                   score={ele.points}
                   teamname={ele.team}
+                  playerid= {ele.id}
                   firstName = {ele.firstName}
                   secondName = {ele.secondName}
                 />
