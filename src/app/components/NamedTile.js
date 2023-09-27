@@ -9,7 +9,7 @@ const NamedTile = (props) => {
   return (
     <>
       <div
-        className="h-1/10 w-full flex justify-center uppercase font-bold bg-yellow-400  text-[10px] md:text-lg cursor-pointer"
+        className="h-1/10 w-full flex justify-center uppercase font-bold bg-yellow-400 hover:bg-yellow-700  text-[10px] md:text-lg cursor-pointer"
         onClick={() => setIsDrawerOpen(true)}
       >
         {props.name}
