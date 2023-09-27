@@ -6,7 +6,7 @@ export default function BBVPositional(props) {
   return (
     <>
       {!!props.data.defenders.length ? (
-        <div className="dark-backgrd text-xs mt-2 results-title text-white font-bold flex justify-center bg-black md:text-base md:font-extrabold md:mt-16">
+        <div className="dark-backgrd text-xs mt-6 results-title text-white font-bold flex justify-center bg-black md:text-base md:font-extrabold md:mt-16">
           Pound For Pound List (per position)
         </div>
       ) : null}
