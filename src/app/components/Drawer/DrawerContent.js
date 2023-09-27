@@ -2,8 +2,12 @@ import { useContext, useState } from "react";
 import { PlayerDataContext } from "../../context/playerDataContext";
 import DrawerHeader from "./DrawerHeader";
 import DrawerTitle from "./DrawerTitle";
+import DrawerFuture from "./DrawerFuture";
 import DrawerHistory from "./DrawerHistory";
-import { ParseDrawerContent } from "@/app/utils/helpers";
+import {
+  ParseHistoricalDrawerContent,
+  ParseFutureDrawerContent,
+} from "@/app/utils/helpers";
 
 const DrawerContent = (props) => {
   const context = useContext(PlayerDataContext);
@@ -14,17 +18,23 @@ const DrawerContent = (props) => {
   );
   const [teamObj, setTeamObj] = useState(context.playerContext.teamData);
 
-  let dataForDrawer = ParseDrawerContent(playerObjData, teamObj);
-  
+  let historicalDataForDrawer = ParseHistoricalDrawerContent(
+    playerObjData,
+    teamObj
+  );
+
+ let futureDataForDrawer=  ParseFutureDrawerContent(playerObjData, teamObj);
+console.log('future', futureDataForDrawer);
+
   return (
-    <div className="h-[33vh] text-black flex flex-col">
+    <div className="h-[33vh] flex flex-col bg-slate-950 ">
       <DrawerHeader name={`${props.firstName} ${props.secondName}`} />
-      <div className="drawerContainer grid grid-cols-2 p-2 md:p-3 h-full">
+      <div className="drawerContainer grid grid-cols-2 p-2 md:p-3 h-full gap-6 md:gap-12">
         <div className="drawerHistoryContainer flex flex-col items-center ">
           <DrawerTitle name="History" />
           <div className="drawerHistoryBody flex flex-col justify-around w-full h-full">
-            {!!dataForDrawer.length
-              ? dataForDrawer.map((ele, index) => (
+            {!!historicalDataForDrawer.length
+              ? historicalDataForDrawer.map((ele, index) => (
                   <DrawerHistory
                     key={index}
                     isHome={ele.isHome}
@@ -41,6 +51,19 @@ const DrawerContent = (props) => {
 
         <div className="drawerFuture flex flex-col items-center">
           <DrawerTitle name="Upcoming Fixtures" />
+          <div className="drawerFutureBody flex flex-col justify-around w-full h-full">
+          {!!futureDataForDrawer.length
+              ? futureDataForDrawer.map((ele, index) => (
+                  <DrawerFuture
+                    key={index}
+                    isHome={ele.isHome}
+                    date={ele.date}
+                    opponent={ele.opponent}
+           
+                  />
+                ))
+              : null}
+          </div>
         </div>
       </div>
     </div>

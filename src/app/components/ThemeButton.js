@@ -12,6 +12,7 @@ const ThemeButton = () => {
     const footerElement = document.querySelector(".footer-text");
     const headerBg = document.querySelectorAll('.dark-backgrd')
     const selecttext =  document.querySelectorAll('.dark-txt')
+  
 
     if (pageTheme === "light") {
       bodyElement.style.backgroundColor = "white";
@@ -26,6 +27,8 @@ const ThemeButton = () => {
     
   })
 
+
+
     } else {
       bodyElement.style.backgroundColor = "black";
       footerElement.style.color = "white";
@@ -37,10 +40,11 @@ const ThemeButton = () => {
       
     })
   
+  
 
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }
-  }),
+  }
+}),
+// eslint-disable-next-line react-hooks/exhaustive-deps
     [pageTheme];
 
   return (

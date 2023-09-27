@@ -474,7 +474,7 @@ export function getFirstXInstancesOfEachType(arr, desiredLength) {
   return result;
 }
 
-export function ParseDrawerContent(playerobj, teamobj) {
+export function ParseHistoricalDrawerContent(playerobj, teamobj) {
   if (playerobj.history.length < 3) {
     console.log("Insufficient data to create card");
     return;
@@ -495,21 +495,50 @@ export function ParseDrawerContent(playerobj, teamobj) {
 
     if (netScore > 0) {
       if (data[i].was_home) {
-        gwObj.didWinColor = 'text-xs md:text-x text-green-700 font-bold';
+        gwObj.didWinColor = "text-xs md:text-x text-green-700 font-bold";
       } else {
-        gwObj.didWinColor = 'text-xs md:text-x text-red-700 font-bold';
+        gwObj.didWinColor = "text-xs md:text-x text-red-700 font-bold";
       }
     } else if (netScore < 0) {
       if (data[i].was_home) {
-        gwObj.didWinColor = 'text-xs md:text-x text-red-700 font-bold';
+        gwObj.didWinColor = "text-xs md:text-x text-red-700 font-bold";
       } else {
-        gwObj.didWinColor = 'text-xs md:text-x text-green-700 font-bold';
+        gwObj.didWinColor = "text-xs md:text-x text-green-700 font-bold";
       }
     } else {
-      gwObj.didWinColor = 'text-xs md:text-x text-blue-500 font-bold';;
+      gwObj.didWinColor = "text-xs md:text-x text-blue-500 font-bold";
     }
 
     result.push(gwObj);
+  }
+
+  return result;
+}
+
+export function ParseFutureDrawerContent(playerobj, teamobj) {
+  if (playerobj.history.length < 1) {
+    console.log("Insufficient data to create future card");
+    return;
+  }
+
+  let result = [];
+  const data = playerobj.fixtures.slice(0, 3);
+
+  for (let i = 0; i < 3; i++) {
+    let futureObj = {};
+
+    futureObj.isHome = data[i].is_home;
+    
+    const dateObj = new Date(data[i].kickoff_time)
+    const dateToString = dateObj.toDateString()
+
+    futureObj.date = dateToString;
+    futureObj.id = data[i].id;
+    futureObj.opponent = data[i].is_home
+      ? teamobj[data[i].team_a - 1].name
+      : teamobj[data[i].team_h - 1].name;
+
+    result.push(futureObj);
   }
 
   return result;
