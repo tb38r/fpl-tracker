@@ -528,9 +528,9 @@ export function ParseFutureDrawerContent(playerobj, teamobj) {
     let futureObj = {};
 
     futureObj.isHome = data[i].is_home;
-    
-    const dateObj = new Date(data[i].kickoff_time)
-    const dateToString = dateObj.toDateString()
+
+    const dateObj = new Date(data[i].kickoff_time);
+    const dateToString = dateObj.toDateString();
 
     futureObj.date = dateToString;
     futureObj.id = data[i].id;
@@ -540,6 +540,42 @@ export function ParseFutureDrawerContent(playerobj, teamobj) {
 
     result.push(futureObj);
   }
+
+  return result;
+}
+
+export function SortHotshot(arr) {
+  if (arr.length < 1) return;
+
+  let result = {};
+  let data = arr[arr.length - 1];
+
+  const arrayOfGoalies = Object.values(data.goalkeepers);
+  const sortedArrayOfGoalies = arrayOfGoalies.sort(
+    (a, b) => b.points - a.points
+  );
+
+  const arrayOfDefenders = Object.values(data.defenders);
+  const sortedArrayOfDefenders = arrayOfDefenders.sort(
+    (a, b) => b.points - a.points
+  );
+
+  const arrayOfMidfielders = Object.values(data.midfielders);
+  const sortedArrayOfMidfielders= arrayOfMidfielders.sort(
+    (a, b) => b.points - a.points
+  );
+
+  
+
+  const arrayOfForwards = Object.values(data.forwards);
+  const sortedArrayOfForwards= arrayOfForwards.sort(
+    (a, b) => b.points - a.points
+  );
+
+  result.goalkeepers = sortedArrayOfGoalies.slice(0,5)
+  result.defenders = sortedArrayOfDefenders.slice(0,5)
+  result.midfielders = sortedArrayOfMidfielders.slice(0,5)
+  result.forwards = sortedArrayOfForwards.slice(0,5)
 
   return result;
 }

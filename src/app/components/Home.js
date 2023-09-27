@@ -16,25 +16,26 @@ import {
   GetTenWeekAverage,
   SortValueForMoney,
   getFirstXInstancesOfEachType,
+  SortHotshot,
 } from "../utils/helpers";
 import BBVPositional from "./BBV-Positional";
 import cloneDeep from "lodash.clonedeep";
 import { Footer } from "./Footer";
 import { PlayerDataContext } from "../context/playerDataContext";
+import Hotshots from "./Hotshots/Hotshots";
 
 export default function Home(props) {
   const [playerContext, setPlayerContext] = useState("");
 
   useEffect(() => {
-    let contextObj = {}
+    let contextObj = {};
     let playerData = cloneDeep(props.playerData);
-    let teamData = cloneDeep(props.staticData.teams)
-    contextObj.playerData = playerData
-    contextObj.teamData = teamData
+    let teamData = cloneDeep(props.staticData.teams);
+    contextObj.playerData = playerData;
+    contextObj.teamData = teamData;
     setPlayerContext(contextObj);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   let DataForValueForMoney = cloneDeep(props.staticData.elements);
 
@@ -58,6 +59,8 @@ export default function Home(props) {
   const [activeIndex, setActiveIndex] = useState(1);
   const [activePositionIndex, setActivePositionIndex] = useState(1);
   const [dataForResults, setDataForResults] = useState([]);
+
+  let sortedHotshots = SortHotshot(cloneDeep(sortedByPosition));
 
   const sorted3WGoalkeepers = SortPlayersByPoints(
     threeWeekAverage,
@@ -225,6 +228,7 @@ export default function Home(props) {
           <BBVPositional
             data={getFirstXInstancesOfEachType(DataForValueForMoney, 5)}
           />
+          <Hotshots data={sortedHotshots}/>
         </PlayerDataContext.Provider>
         <Footer />
       </div>
