@@ -3,7 +3,6 @@ import Honourables from "../Honourables";
 
 const Hotshots = (props) => {
 
-    console.log('props from hotshot', props);
   return (
     <>
       {!!props.data.defenders.length ? (

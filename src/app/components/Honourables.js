@@ -5,7 +5,6 @@ import DrawerContent from "./Drawer/DrawerContent";
 import { useState } from "react";
 
 export default function Honourables(props) {
-  console.log('props from honor', props);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [playerID, setPlayerID] = useState(props.id);
 
