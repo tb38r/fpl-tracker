@@ -24,7 +24,7 @@ export async function BootstrapStaticData() {
 
   return data;
 }
-
+//
 
 export async function FetchPlayerData(playerID) {
 
