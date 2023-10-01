@@ -1,6 +1,8 @@
 import cloneDeep from "lodash.clonedeep";
 
 export async function GetAllPlayerData(fn) {
+  
+
   let result = {};
   for (let i = 1; i < 720; i++) {
     let data = await fn(i);
@@ -17,13 +19,34 @@ export async function GetAllGameweeksData(fn) {
   let result = [];
 
   for (let i = 1; i < 39; i++) {
-    let data = await fn(i);
-    if (data.elements.length === 0) break;
-    result.push(data);
+    try {
+      let data = await fn(i);
+      if (data.elements.length === 0) {
+        console.log(`No data available for gameweek ${i}`);
+        break;
+      }
+      result.push(data);
+    } catch (error) {
+      console.error(`Error processing gameweek ${i}:`, error);
+      break; // Stop processing further gameweeks on error
+    }
   }
 
   return result;
 }
+
+
+// export async function GetAllGameweeksData(fn) {
+//   let result = [];
+
+//   for (let i = 1; i < 39; i++) {
+//     let data = await fn(i);
+//     if (data.elements.length === 0) break;
+//     result.push(data);
+//   }
+
+//   return result;
+// }
 
 //returns an array per gw sorted by total points
 //to test, are values returned in ascending order as expected

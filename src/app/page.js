@@ -7,11 +7,15 @@ import {
 import { GetAllGameweeksData, GetAllPlayerData } from "./utils/helpers";
 
 export default async function AppMain() {
-  let data = await GetAllGameweeksData(FetchGameWeekData);
-  let staticData = await BootstrapStaticData();
-  let playerData = await GetAllPlayerData(FetchPlayerData);
 
-  return (
+
+
+
+  let playerData = await GetAllPlayerData(FetchPlayerData);
+  let staticData = await BootstrapStaticData();
+  let data = await GetAllGameweeksData(FetchGameWeekData);
+
+  return  (
     <>
       <Home apiData={data} staticData={staticData} playerData ={playerData}/>
     </>
