@@ -11,8 +11,7 @@ export default async function AppMain() {
   let staticData = await BootstrapStaticData();
   let playerData = await GetAllPlayerData(FetchPlayerData);
 
-  //console.log('len', data.length);
-
+console.log('length', data.length);
   return (
     <>
       <Home apiData={data} staticData={staticData} playerData ={playerData}/>
