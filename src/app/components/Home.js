@@ -23,9 +23,11 @@ import cloneDeep from "lodash.clonedeep";
 import { Footer } from "./Footer";
 import { PlayerDataContext } from "../context/playerDataContext";
 import Hotshots from "./Hotshots/Hotshots";
+import { revalidatePath } from "next/cache";
 
 export default function Home(props) {
   const [playerContext, setPlayerContext] = useState("");
+  revalidatePath("/");
 
 
   useEffect(() => {

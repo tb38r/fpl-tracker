@@ -7,7 +7,6 @@ export async function GetAllPlayerData(fn) {
     if (data.status === "ok") {
       result[i] = data.data;
     }
-    // if (data.elements.length === 0) break;
   }
 
   return result;
