@@ -13,7 +13,7 @@ export async function FetchGameWeekData(gameweek) {
 
 export async function BootstrapStaticData() {
   const response = await fetch(
-    `https://fantasy.premierleague.com/api/bootstrap-static/`,
+    `https://fantasy.premierleague.com/api/bootstrap-static/`, 
    
   );
 
@@ -30,7 +30,7 @@ export async function FetchPlayerData(playerID) {
 
   const respObj = {}
   const response = await fetch(
-    `https://fantasy.premierleague.com/api/element-summary/${playerID}/`,{ next: { revalidate: 1 } }
+    `https://fantasy.premierleague.com/api/element-summary/${playerID}/`, 
     );
 
   if (!response.ok) {
