@@ -5,7 +5,7 @@ import Position from "./Position";
 import Header from "./Header";
 import Results from "./Results";
 import BestByValue from "./BestByValue";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import {
   SortedByPoints,
   SortedByPosition,
@@ -26,6 +26,7 @@ import Hotshots from "./Hotshots/Hotshots";
 
 export default function Home(props) {
   const [playerContext, setPlayerContext] = useState("");
+
 
   useEffect(() => {
     let contextObj = {};
