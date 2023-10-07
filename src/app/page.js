@@ -13,7 +13,7 @@ export default async function AppMain() {
   let playerData = await GetAllPlayerData(FetchPlayerData);
 
   revalidatePath('/');
-
+//
 
 console.log('length', data.length);
   return (
