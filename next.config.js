@@ -4,6 +4,9 @@ const nextConfig = {
       serverActions: true,
     },
     staticPageGenerationTimeout: 120,
+    fetchCache: 'force-no-store',
+
   }
-  
+
+
   module.exports = nextConfig
