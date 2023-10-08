@@ -23,11 +23,9 @@ import cloneDeep from "lodash.clonedeep";
 import { Footer } from "./Footer";
 import { PlayerDataContext } from "../context/playerDataContext";
 import Hotshots from "./Hotshots/Hotshots";
-// import { revalidatePath } from "next/cache";
 
 export default function Home(props) {
   const [playerContext, setPlayerContext] = useState("");
-  // revalidatePath("/");
 
 
   useEffect(() => {
@@ -52,10 +50,11 @@ export default function Home(props) {
   let sortedByPosition = SortedByPosition(sortedWithValues);
 
   let sortedByPositionCopy = cloneDeep(sortedByPosition);
-  let copiedFiveParsed = JSON.parse(JSON.stringify(sortedByPosition));
-  let copiedTenParsed = JSON.parse(JSON.stringify(sortedByPosition));
+  let copiedFiveParsed = cloneDeep(sortedByPosition);
+  let copiedTenParsed = cloneDeep(sortedByPosition);
 
   let threeWeekAverage = GetThreeWeekAverage(sortedByPositionCopy);
+
   let fiveWeekAverage = GetFiveWeekAverage(copiedFiveParsed);
   let tenWeekAverage = GetTenWeekAverage(copiedTenParsed);
 
@@ -76,6 +75,7 @@ export default function Home(props) {
     "midfielders"
   );
   const sorted3WForwards = SortPlayersByPoints(threeWeekAverage, "forwards");
+
 
   /////
 

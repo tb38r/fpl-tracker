@@ -121,6 +121,7 @@ export function Round(value, precision) {
 export function GetThreeWeekAverage(arrOfObj) {
   //first slice
   const data = GetLastXElements(arrOfObj, 3);
+  
   if (data.length === 0) {
     console.log("Data object of insufficent length");
     return;
