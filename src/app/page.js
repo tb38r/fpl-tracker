@@ -13,7 +13,7 @@ export default async function AppMain() {
   let staticData = await BootstrapStaticData();
   let playerData = await GetAllPlayerData(FetchPlayerData);
 
-
+//
 
   return (
     <>
