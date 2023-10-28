@@ -30,7 +30,7 @@ export async function FetchPlayerData(playerID) {
 
   const respObj = {}
   const response = await fetch(
-    `https://fantasy.premierleague.com/api/element-summary/${playerID}/`, { cache: 'no-cache' }
+    `https://fantasy.premierleague.com/api/element-summary/${playerID}/`, 
     );
 
   if (!response.ok) {
