@@ -1,6 +1,6 @@
 export async function FetchGameWeekData(gameweek) {
   const response = await fetch(
-    `https://fantasy.premierleague.com/api/event/${gameweek}/live/`,{ cache: 'no-cache' }
+    `https://fantasy.premierleague.com/api/event/${gameweek}/live/`,{ cache: 'no-store' }
     );
 
   if (!response.ok) {
@@ -13,7 +13,7 @@ export async function FetchGameWeekData(gameweek) {
 
 export async function BootstrapStaticData() {
   const response = await fetch(
-    `https://fantasy.premierleague.com/api/bootstrap-static/`, { cache: 'no-cache' }
+    `https://fantasy.premierleague.com/api/bootstrap-static/`, { cache: 'no-store' }
    
   );
 
