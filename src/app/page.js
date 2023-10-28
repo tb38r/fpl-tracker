@@ -1,5 +1,4 @@
 import Home from "./components/Home";
-import { headers } from "next/headers";
 
 import {
   FetchGameWeekData,
@@ -12,7 +11,6 @@ import { GetAllGameweeksData, GetAllPlayerData } from "./utils/helpers";
 
 
 export default async function AppMain() {
-  let headersList = headers();
 
 
 
