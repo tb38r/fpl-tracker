@@ -1,4 +1,6 @@
 import Home from "./components/Home";
+import { headers } from "next/headers";
+
 import {
   FetchGameWeekData,
   BootstrapStaticData,
@@ -9,7 +11,13 @@ import { GetAllGameweeksData, GetAllPlayerData } from "./utils/helpers";
 export const revalidate = 'force-dynamic';
 
 
+
 export default async function AppMain() {
+  let headersList = headers();
+
+
+
+
   
 
   let data = await GetAllGameweeksData(FetchGameWeekData);
