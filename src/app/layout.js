@@ -8,7 +8,6 @@ export const metadata = {
   title: "FPL Tracker",
   description: "FPL data source for your decision making",
 };
-export const revalidate = 0;
 
 export default function RootLayout({ children }) {
   return (
