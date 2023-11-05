@@ -3,6 +3,7 @@ import Honourables from "../Honourables";
 
 const Hotshots = (props) => {
 
+
   return (
     <>
       {!!props.data.defenders.length ? (
