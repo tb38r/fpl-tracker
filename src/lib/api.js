@@ -13,10 +13,9 @@ export async function FetchGameWeekData(gameweek) {
 }
 
 export async function BootstrapStaticData() {
-  const cacheBust = Date.now()
 
   const response = await fetch(
-    `https://fantasy.premierleague.com/api/bootstrap-static?cacheBust=${cacheBust}/`, 
+    `https://fantasy.premierleague.com/api/bootstrap-static/`, 
    
   );
 
