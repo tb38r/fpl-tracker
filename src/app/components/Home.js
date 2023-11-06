@@ -159,7 +159,7 @@ export default function Home(props) {
   }, [activeIndex, activePositionIndex]);
 
   return (
-    <div className="container h-fit mx-auto flex flex-col max-w-screen-2xl">
+    <div className="container h-fit mx-auto flex flex-col 7xl">
       <Header />
 
       <div className="container-body h-full">
