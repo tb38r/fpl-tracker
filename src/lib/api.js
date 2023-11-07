@@ -11,7 +11,7 @@ export async function FetchGameWeekData(gameweek) {
 
   return data;
 }
-
+//
 export async function BootstrapStaticData() {
 
   const response = await fetch(
