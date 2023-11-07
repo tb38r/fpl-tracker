@@ -7,8 +7,8 @@ import {
 } from "@/lib/api";
 import { GetAllGameweeksData, GetAllPlayerData } from "./utils/helpers";
 
-export const revalidate = 'force-dynamic';
 
+export const revalidate = 900;
 //
 
 export default async function AppMain() {
