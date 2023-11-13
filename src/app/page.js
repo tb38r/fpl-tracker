@@ -8,7 +8,6 @@ import {
 import { GetAllGameweeksData, GetAllPlayerData } from "./utils/helpers";
 
 
-export const revalidate = 1000;
 
 
 export default async function AppMain() {
