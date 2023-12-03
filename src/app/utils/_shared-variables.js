@@ -35,7 +35,7 @@ export const teamCodeToString = {
   49: "Sheffield Utd",
   43: "Man City",
   102: "Luton",
-  90: "Burnley ",
+  90: "Burnley",
   31: "Crystal Palace",
   91: "Bournemouth",
   11: "Everton",

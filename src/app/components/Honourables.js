@@ -1,5 +1,5 @@
-import { kitImage } from "../utils/shared-variables";
-import { teamCodeToString } from "../utils/shared-variables";
+import { kitImage } from "../utils/_shared-variables";
+import { teamCodeToString } from "../utils/_shared-variables";
 import { Drawer } from "@mui/material";
 import DrawerContent from "./Drawer/DrawerContent";
 import { useState } from "react";

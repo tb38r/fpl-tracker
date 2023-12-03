@@ -7,7 +7,7 @@ import DrawerHistory from "./DrawerHistory";
 import {
   ParseHistoricalDrawerContent,
   ParseFutureDrawerContent,
-} from "@/app/utils/helpers";
+} from "@/app/utils/_helpers";
 
 const DrawerContent = (props) => {
   const context = useContext(PlayerDataContext);
@@ -23,7 +23,7 @@ const DrawerContent = (props) => {
     teamObj
   );
 
- let futureDataForDrawer=  ParseFutureDrawerContent(playerObjData, teamObj);
+  let futureDataForDrawer = ParseFutureDrawerContent(playerObjData, teamObj);
 
   return (
     <div className="h-[33vh] flex flex-col bg-slate-950 ">
@@ -51,14 +51,13 @@ const DrawerContent = (props) => {
         <div className="drawerFuture flex flex-col items-center">
           <DrawerTitle name="Upcoming Fixtures" />
           <div className="drawerFutureBody flex flex-col justify-around w-full h-full">
-          {!!futureDataForDrawer.length
+            {!!futureDataForDrawer.length
               ? futureDataForDrawer.map((ele, index) => (
                   <DrawerFuture
                     key={index}
                     isHome={ele.isHome}
                     date={ele.date}
                     opponent={ele.opponent}
-           
                   />
                 ))
               : null}

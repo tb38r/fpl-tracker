@@ -3,7 +3,7 @@ import {
   GetTenWeekAverage,
   GetThreeWeekAverage,
   SortedByPosition,
-} from "@/app/utils/helpers";
+} from "@/app/utils/_helpers";
 import { MockSortedByPointsData } from "./mocks/SortedByPoints";
 import { MockSortedByPosition } from "./mocks/MockSortedByPosition";
 
@@ -29,7 +29,6 @@ describe("Test suite of helper functions", () => {
   test("SortedByPosition Chain", () => {
     //simulate sorted by position
     const result = SortedByPosition(MockSortedByPointsData);
-
 
     expect(result[0]).toHaveProperty("goalkeepers", {});
     expect(result[0]).toHaveProperty("defenders", {});

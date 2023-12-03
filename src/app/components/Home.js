@@ -5,7 +5,7 @@ import Position from "./Position";
 import Header from "./Header";
 import Results from "./Results";
 import BestByValue from "./BestByValue";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import {
   SortedByPoints,
   SortedByPosition,
@@ -17,7 +17,7 @@ import {
   SortValueForMoney,
   getFirstXInstancesOfEachType,
   SortHotshot,
-} from "../utils/helpers";
+} from "../utils/_helpers";
 import BBVPositional from "./BBV-Positional";
 import cloneDeep from "lodash.clonedeep";
 import { Footer } from "./Footer";
@@ -49,10 +49,11 @@ export default function Home(props) {
   let sortedByPosition = SortedByPosition(sortedWithValues);
 
   let sortedByPositionCopy = cloneDeep(sortedByPosition);
-  let copiedFiveParsed = JSON.parse(JSON.stringify(sortedByPosition));
-  let copiedTenParsed = JSON.parse(JSON.stringify(sortedByPosition));
+  let copiedFiveParsed = cloneDeep(sortedByPosition);
+  let copiedTenParsed = cloneDeep(sortedByPosition);
 
   let threeWeekAverage = GetThreeWeekAverage(sortedByPositionCopy);
+
   let fiveWeekAverage = GetFiveWeekAverage(copiedFiveParsed);
   let tenWeekAverage = GetTenWeekAverage(copiedTenParsed);
 
@@ -156,7 +157,7 @@ export default function Home(props) {
   }, [activeIndex, activePositionIndex]);
 
   return (
-    <div className="container h-fit mx-auto flex flex-col max-w-7xl">
+    <div className="container h-fit mx-auto flex flex-col max-w-screen-2xl	">
       <Header />
 
       <div className="container-body h-full">
@@ -228,7 +229,7 @@ export default function Home(props) {
           <BBVPositional
             data={getFirstXInstancesOfEachType(DataForValueForMoney, 5)}
           />
-          <Hotshots data={sortedHotshots}/>
+          <Hotshots data={sortedHotshots} />
         </PlayerDataContext.Provider>
         <Footer />
       </div>
