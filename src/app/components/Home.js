@@ -17,7 +17,7 @@ import {
   SortValueForMoney,
   getFirstXInstancesOfEachType,
   SortHotshot,
-} from "../utils/helpers";
+} from "../utils/_helpers";
 import BBVPositional from "./BBV-Positional";
 import cloneDeep from "lodash.clonedeep";
 import { Footer } from "./Footer";
@@ -231,7 +231,7 @@ export default function Home(props) {
           <BBVPositional
             data={getFirstXInstancesOfEachType(DataForValueForMoney, 5)}
           />
-          <Hotshots data={sortedHotshots}/>
+          <Hotshots data={sortedHotshots} />
         </PlayerDataContext.Provider>
         <Footer />
       </div>

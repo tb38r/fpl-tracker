@@ -1,7 +1,7 @@
 // api.test.js
-import { FetchGameWeekData } from "@/lib/api";
+import { FetchGameWeekData } from "@/lib/_api";
 
-describe('FetchGameWeekData', () => {
+describe("FetchGameWeekData", () => {
   // Mock the fetch function
   global.fetch = jest.fn();
 
@@ -10,7 +10,7 @@ describe('FetchGameWeekData', () => {
     fetch.mockClear();
   });
 
-  test('fetches data successfully', async () => {
+  test("fetches data successfully", async () => {
     const mockData = { id: 1 };
     const mockResponse = {
       ok: true,
@@ -23,16 +23,14 @@ describe('FetchGameWeekData', () => {
     const gameweek = 1;
     const result = await FetchGameWeekData(gameweek);
 
-
     expect(result).toEqual(mockData);
     expect(fetch).toHaveBeenCalledWith(
-      `https://fantasy.premierleague.com/api/event/${gameweek}/live/`,
-      
+      `https://fantasy.premierleague.com/api/event/${gameweek}/live/`
     );
   });
 
-  test('fetches data with error', async () => {
-    const errorMessage = 'Failed to fetch';
+  test("fetches data with error", async () => {
+    const errorMessage = "Failed to fetch";
     const mockResponse = {
       ok: false,
       statusText: errorMessage,
@@ -43,11 +41,10 @@ describe('FetchGameWeekData', () => {
     const gameweek = 1;
 
     // check that the function throws the right error
-     expect(FetchGameWeekData(gameweek)).rejects.toThrow(errorMessage);
-    
+    expect(FetchGameWeekData(gameweek)).rejects.toThrow(errorMessage);
+
     expect(fetch).toHaveBeenCalledWith(
-      `https://fantasy.premierleague.com/api/event/${gameweek}/live/`,
-      
+      `https://fantasy.premierleague.com/api/event/${gameweek}/live/`
     );
   });
 });

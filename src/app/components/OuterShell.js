@@ -1,4 +1,4 @@
-import { kitImage } from "../utils/shared-variables";
+import { kitImage } from "../utils/_shared-variables";
 import NamedTile from "./NamedTile";
 
 export default function OuterShell(props) {
