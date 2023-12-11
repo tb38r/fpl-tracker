@@ -41,6 +41,7 @@ export async function FetchPlayerData(playerID) {
 
     if (!response.ok) {
       throw new Error(`Failed to fetch player data for id ${playerID}`);
+    
     }
     const data = await response.json();
 

@@ -10,6 +10,7 @@ export async function GetAllPlayerData(fn) {
       } else {
         // Log the error and continue the loop
         console.warn(`Failed to get all player data for player ${i}`);
+     continue
       }
     } catch (err) {
       // Log the error and continue the loop
