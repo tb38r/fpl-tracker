@@ -33,7 +33,7 @@ export async function GetAllGameweeksData(fn) {
         result.push(data);
       } else {
         // Break the loop since no more elements exist
-        break;
+        continue;
       }
     } catch (err) {
       // Log the error and continue the loop

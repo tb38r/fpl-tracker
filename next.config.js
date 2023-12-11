@@ -4,7 +4,7 @@ const nextConfig = {
       serverActions: true,
     },
 
-    staticPageGenerationTimeout: 360,
+    staticPageGenerationTimeout: 480,
 
   }
 
