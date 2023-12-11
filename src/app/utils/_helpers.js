@@ -3,22 +3,42 @@ import cloneDeep from "lodash.clonedeep";
 export async function GetAllPlayerData(fn) {
   let result = {};
   for (let i = 1; i < 720; i++) {
-    let data = await fn(i);
-    if (data.status === "ok") {
-      result[i] = data.data;
+    try {
+      let data = await fn(i);
+      if (data.status === 'ok') {
+        result[i] = data.data;
+      } else {
+        // Log the error and continue the loop
+        console.warn(`Failed to get all player data for player ${i}`);
+     continue
+      }
+    } catch (err) {
+      // Log the error and continue the loop
+      console.error(`Error getting all player  data: ${err} for id :${i}`);
     }
   }
 
   return result;
 }
 
+
+
 export async function GetAllGameweeksData(fn) {
   let result = [];
 
   for (let i = 1; i < 39; i++) {
-    let data = await fn(i);
-    if (data.elements.length === 0) break;
-    result.push(data);
+    try {
+      let data = await fn(i);
+      if (data.elements.length !== 0) {
+        result.push(data);
+      } else {
+        // Break the loop since no more elements exist
+        break;
+      }
+    } catch (err) {
+      // Log the error and continue the loop
+      console.error(`Error fetching gameweek data: ${err} for GW:${i}`);
+    }
   }
 
   return result;
