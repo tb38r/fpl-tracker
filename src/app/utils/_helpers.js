@@ -7,10 +7,6 @@ export async function GetAllPlayerData(fn) {
       let data = await fn(i);
       if (data.status === 'ok') {
         result[i] = data.data;
-      } else {
-        // Log the error and continue the loop
-        console.warn(`Failed to get all player data for player ${i}`);
-     continue
       }
     } catch (err) {
       // Log the error and continue the loop
@@ -500,6 +496,9 @@ export function ParseHistoricalDrawerContent(playerobj, teamobj) {
     return;
   }
 
+  console.log('player obj from parse history', playerobj);
+  console.log('team obj from parse history', teamobj);
+
   let result = [];
   const data = GetLastXElements(playerobj.history, 3);
 
@@ -565,6 +564,7 @@ export function ParseFutureDrawerContent(playerobj, teamobj) {
 }
 
 export function SortHotshot(arr) {
+  
   if (arr.length < 1) return;
 
   let result = {};

@@ -39,16 +39,22 @@ export async function FetchPlayerData(playerID) {
       `https://fantasy.premierleague.com/api/element-summary/${playerID}/`,
     );
 
+
     if (!response.ok) {
       throw new Error(`Failed to fetch player data for id ${playerID}`);
-    
+     
     }
     const data = await response.json();
 
     const respObj = {};
     respObj.status = 'ok';
     respObj.data = data;
+    if(playerID == 49){
+      console.log('Martinez History Len?? -->', respObj.data.history.length);
+      console.log('Martinez FIXTURES Len?? -->', respObj.data.fixtures.length);
+      console.log('Martinez ?? -->', respObj);
 
+    }
     return respObj;
   } catch (err) {
     console.error(`Error fetching player data: ${err}`);

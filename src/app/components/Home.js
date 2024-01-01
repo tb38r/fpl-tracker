@@ -47,7 +47,7 @@ export default function Home(props) {
     sortedByPoints,
     cloneDeep(props.staticData)
   );
-  let sortedByPosition = SortedByPosition(sortedWithValues);
+  let sortedByPosition = SortedByPosition(cloneDeep(sortedWithValues));
 
   let sortedByPositionCopy = cloneDeep(sortedByPosition);
   let copiedFiveParsed = cloneDeep(sortedByPosition);

@@ -11,6 +11,7 @@ import {
 
 const DrawerContent = (props) => {
   const context = useContext(PlayerDataContext);
+ // console.log('from context -->', context.playerContext.playerData);
 
   const [playerID, setPlayerID] = useState(props.playerID);
   const [playerObjData, setPlayerObjData] = useState(
