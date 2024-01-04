@@ -1,6 +1,8 @@
 
 const DrawerHistory = (props) => {
 
+  console.log('From Drawer History --> ', props);
+
 
 
   return (

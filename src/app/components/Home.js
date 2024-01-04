@@ -104,7 +104,7 @@ export default function Home(props) {
   useEffect(() => {
     setDataForResults(sorted3WGoalkeepers.slice(0, 8));
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
