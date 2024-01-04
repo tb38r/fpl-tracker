@@ -24,7 +24,7 @@ const DrawerContent = (props) => {
   );
 
   let futureDataForDrawer = ParseFutureDrawerContent(playerObjData, teamObj);
-
+//
   return (
     <div className="h-[33vh] flex flex-col bg-slate-950 ">
       <DrawerHeader name={`${props.firstName} ${props.secondName}`} />
