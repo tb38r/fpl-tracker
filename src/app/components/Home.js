@@ -30,27 +30,8 @@ export default function Home(props) {
   const [error, setError] = useState(null);
 
 
-  /*
-  useEffect(() => {
-  const fetchData = async () => {
-    const response = await fetch('/api/fetchExternalData'); // Call the API route
-    const data = await response.json();
-    setFetchedData(data);
-  };
-  fetchData();
-}, []);
-
-  */
 
   useEffect(() => {
-
-    // const fetchBootStrapData = async () => {
-    //   const response = await fetch("/api/get-bootstrap"); // Call the API route
-    //   const data = await response.json();
-    //   setBootStrapData(data);
-    // };
-
-    //fetchBootStrapData();
 
     const fetchBootstrapData = async () => {
       setError(null);
@@ -58,15 +39,14 @@ export default function Home(props) {
       try {
         const response = await fetch('/api/get-bootstrap');
         const data = await response.json();
-        setBootStrapData(data);
+        setBootStrapData(data.elements);
       } catch (error) {
-        setError(error); // Display a user-friendly error message
+        setError("Error from fetchBootstrapData",error); // Display a user-friendly error message
       } 
     };
+
     fetchBootstrapData();
   
-
-
     let contextObj = {};
     let playerData = cloneDeep(props.playerData);
     let teamData = cloneDeep(props.staticData.teams);
@@ -77,8 +57,11 @@ export default function Home(props) {
   }, []);
 
   console.log("This is the fetched BootStrapData", bootStrapData);
-  console.log("Possible error", error);
-  let DataForValueForMoney = cloneDeep(props.staticData.elements);
+  console.log("This is the static data", props.staticData.elements);
+
+  
+
+  let DataForValueForMoney = cloneDeep(bootStrapData);
 
   SortValueForMoney(DataForValueForMoney);
 

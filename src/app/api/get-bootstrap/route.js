@@ -12,10 +12,15 @@ export async function GET(req, res) {
       );
     }
     const data = await response.json();
+    console.log("data from serverless function", data);
     return NextResponse.json(
       {
         data,
-        path: req.nextUrl.pathname, 
+        events: data.events,
+        element_types: data.element_types,
+        elements: data.elements,
+        teams: data.teams,
+        path: req.nextUrl.pathname,
       },
       {
         status: 200,
@@ -23,7 +28,7 @@ export async function GET(req, res) {
     );
   } catch (error) {
     console.error("Failed to fetch data from serverless function", error);
-    return NextResponse.json({ error: error.message }, { status: 500 }); 
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
