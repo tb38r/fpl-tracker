@@ -28,6 +28,7 @@ export default function Home(props) {
   const [playerContext, setPlayerContext] = useState("");
   const [bootStrapData, setBootStrapData] = useState(null);
   const [error, setError] = useState(null);
+  const [dataForValueForMoney, setDataForValueForMoney] = useState(null);
 
 
 
@@ -56,12 +57,14 @@ export default function Home(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  
+
   console.log("This is the fetched BootStrapData", bootStrapData);
   console.log("This is the static data", props.staticData.elements);
 
   
 
-  let DataForValueForMoney = cloneDeep(bootStrapData);
+  let DataForValueForMoney = cloneDeep(props.staticData.elements);
 
   SortValueForMoney(DataForValueForMoney);
 
