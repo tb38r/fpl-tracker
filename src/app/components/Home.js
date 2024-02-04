@@ -26,9 +26,28 @@ import Hotshots from "./Hotshots/Hotshots";
 
 export default function Home(props) {
   const [playerContext, setPlayerContext] = useState("");
+  const [bootStrapData, setBootStrapData] = useState(null);
+  const [error, setError] = useState(null);
+  const [dataForValueForMoney, setDataForValueForMoney] = useState(null);
+
 
 
   useEffect(() => {
+
+    const fetchBootstrapData = async () => {
+      setError(null);
+  
+      try {
+        const response = await fetch('/api/get-bootstrap');
+        const data = await response.json();
+        setBootStrapData(data.elements);
+      } catch (error) {
+        setError("Error from fetchBootstrapData",error); // Display a user-friendly error message
+      } 
+    };
+
+    fetchBootstrapData();
+  
     let contextObj = {};
     let playerData = cloneDeep(props.playerData);
     let teamData = cloneDeep(props.staticData.teams);
@@ -37,6 +56,13 @@ export default function Home(props) {
     setPlayerContext(contextObj);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  
+
+  console.log("This is the fetched BootStrapData", bootStrapData);
+  console.log("This is the static data", props.staticData.elements);
+
+  
 
   let DataForValueForMoney = cloneDeep(props.staticData.elements);
 
@@ -75,7 +101,6 @@ export default function Home(props) {
     "midfielders"
   );
   const sorted3WForwards = SortPlayersByPoints(threeWeekAverage, "forwards");
-
 
   /////
 
