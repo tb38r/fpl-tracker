@@ -5,8 +5,11 @@ export async function GetAllPlayerData(fn) {
   for (let i = 1; i < 720; i++) {
     try {
       let data = await fn(i);
-      if (data.status === 'ok') {
+      if (data.status === "ok") {
         result[i] = data.data;
+      } else if (data == "no data") {
+        console.log("No data at GW", i);
+        break;
       }
     } catch (err) {
       // Log the error and continue the loop
@@ -17,8 +20,6 @@ export async function GetAllPlayerData(fn) {
   return result;
 }
 
-
-
 export async function GetAllGameweeksData(fn) {
   let result = [];
 
@@ -27,10 +28,11 @@ export async function GetAllGameweeksData(fn) {
       let data = await fn(i);
       if (data.elements.length !== 0) {
         result.push(data);
-      } else {
-        // Break the loop since no more elements exist
-        break;
       }
+      //else {
+      // Break the loop since no more elements exist
+      //  break;
+      // }
     } catch (err) {
       // Log the error and continue the loop
       console.error(`Error fetching gameweek data: ${err} for GW:${i}`);
@@ -137,7 +139,7 @@ export function Round(value, precision) {
 export function GetThreeWeekAverage(arrOfObj) {
   //first slice
   const data = GetLastXElements(arrOfObj, 3);
-  
+
   if (data.length === 0) {
     console.log("Data object of insufficent length");
     return;
@@ -496,9 +498,6 @@ export function ParseHistoricalDrawerContent(playerobj, teamobj) {
     return;
   }
 
-  console.log('player obj from parse history', playerobj);
-  console.log('team obj from parse history', teamobj);
-
   let result = [];
   const data = GetLastXElements(playerobj.history, 3);
 
@@ -564,7 +563,6 @@ export function ParseFutureDrawerContent(playerobj, teamobj) {
 }
 
 export function SortHotshot(arr) {
-  
   if (arr.length < 1) return;
 
   let result = {};
@@ -581,21 +579,19 @@ export function SortHotshot(arr) {
   );
 
   const arrayOfMidfielders = Object.values(data.midfielders);
-  const sortedArrayOfMidfielders= arrayOfMidfielders.sort(
+  const sortedArrayOfMidfielders = arrayOfMidfielders.sort(
     (a, b) => b.points - a.points
   );
-
-  
 
   const arrayOfForwards = Object.values(data.forwards);
-  const sortedArrayOfForwards= arrayOfForwards.sort(
+  const sortedArrayOfForwards = arrayOfForwards.sort(
     (a, b) => b.points - a.points
   );
 
-  result.goalkeepers = sortedArrayOfGoalies.slice(0,5)
-  result.defenders = sortedArrayOfDefenders.slice(0,5)
-  result.midfielders = sortedArrayOfMidfielders.slice(0,5)
-  result.forwards = sortedArrayOfForwards.slice(0,5)
+  result.goalkeepers = sortedArrayOfGoalies.slice(0, 5);
+  result.defenders = sortedArrayOfDefenders.slice(0, 5);
+  result.midfielders = sortedArrayOfMidfielders.slice(0, 5);
+  result.forwards = sortedArrayOfForwards.slice(0, 5);
 
   return result;
 }

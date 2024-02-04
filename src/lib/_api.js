@@ -5,9 +5,17 @@ export async function FetchGameWeekData(gameweek) {
     );
 
     if (!response.ok) {
-      throw new Error("Failed to fetch data");
+      throw new Error("Failed to fetch data for GW:", gameweek);
     }
+
+  
     const data = await response.json();
+    console.log('data--->', data);
+    if(data[elements].length == 0){
+      console.log('No data for GW:', gameweek);
+      return "no data"
+    }
+
     return data;
   } catch (err) {
     console.error(`Error fetching gameweek data: ${err} for gameweek ${gameweek}`);
@@ -49,12 +57,7 @@ export async function FetchPlayerData(playerID) {
     const respObj = {};
     respObj.status = 'ok';
     respObj.data = await data;
-    if(playerID == 49){
-      console.log('Martinez History Len?? -->', respObj.data.history.length);
-      console.log('Martinez FIXTURES Len?? -->', respObj.data.fixtures.length);
-      console.log('Martinez ?? -->', data);
 
-    }
     return respObj;
   } catch (err) {
     console.error(`Error fetching player data: ${err}`);

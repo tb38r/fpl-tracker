@@ -27,28 +27,26 @@ import Hotshots from "./Hotshots/Hotshots";
 export default function Home(props) {
   const [playerContext, setPlayerContext] = useState("");
   const [bootStrapData, setBootStrapData] = useState(null);
-  const [error, setError] = useState(null);
+  const [fetchbooterror, setFetchBootError] = useState(null);
   const [dataForValueForMoney, setDataForValueForMoney] = useState(null);
-
-
+  const [sortedValueForMoney, setSortedValueForMoney] = useState(null);
+  const [apiData, setApiData] = useState(null);
 
   useEffect(() => {
-
     const fetchBootstrapData = async () => {
-      setError(null);
-  
       try {
-        const response = await fetch('/api/get-bootstrap');
+        const response = await fetch("/api/get-bootstrap");
         const data = await response.json();
         setBootStrapData(data.elements);
-        setDataForValueForMoney(cloneDeep(bootStrapData))
+        setDataForValueForMoney(cloneDeep(bootStrapData));
+        setSortedValueForMoney(SortValueForMoney(dataForValueForMoney));
       } catch (error) {
-        setError("Error from fetchBootstrapData",error); // Display a user-friendly error message
-      } 
+        setFetchBootError("Error from fetchBootstrapData", error); // Display a user-friendly error message
+      }
     };
 
     fetchBootstrapData();
-  
+
     let contextObj = {};
     let playerData = cloneDeep(props.playerData);
     let teamData = cloneDeep(props.staticData.teams);
@@ -58,15 +56,33 @@ export default function Home(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  ////////////////////////////////////
+
+  useEffect(() => {
+    const fetchApiData = async () => {
+      try {
+        const response = await fetch("/api/get-api-data");
+        const data = await response.json();
+        setApiData(data.apiData);
+      } catch (error) {
+        setError("Error from fetchApiData", error); // Display a user-friendly error message
+      }
+    };
+
+    fetchApiData();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  console.log("Api from fetch -->", apiData);
 
   //console.log("This is the fetched BootStrapData", bootStrapData);
- // console.log("This is the static data", props.staticData.elements);
-
-  
+  // console.log("This is the static data", props.staticData.elements);
 
   let DataForValueForMoney = cloneDeep(props.staticData.elements);
-
   SortValueForMoney(DataForValueForMoney);
+
+  //
 
   let sortedByPoints = SortedByPoints(props.apiData);
   let sortedWithValues = SortedWithValues(
