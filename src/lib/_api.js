@@ -48,11 +48,11 @@ export async function FetchPlayerData(playerID) {
 
     const respObj = {};
     respObj.status = 'ok';
-    respObj.data = data;
+    respObj.data = await data;
     if(playerID == 49){
       console.log('Martinez History Len?? -->', respObj.data.history.length);
       console.log('Martinez FIXTURES Len?? -->', respObj.data.fixtures.length);
-      console.log('Martinez ?? -->', respObj);
+      console.log('Martinez ?? -->', data);
 
     }
     return respObj;
